@@ -4,16 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How AI engines evaluate developer tools — sample Checkly audit | CiteSprint</title>
-  <meta name="description" content="See how AI engines evaluate a public developer tool: buyer prompts, win/tie/lose labels, and honest sources (site checks, Glotier ChatGPT+Gemini, Reditus). Practice sample — not a customer case study. Claim a CiteSprint from $497." />
+  <meta name="description" content="Practice sample audit of a public developer tool: buyer prompts, win/tie/lose labels, and labeled sources (site checks, Glotier ChatGPT+Gemini study, Reditus citation map). Not a customer case study. Claim a CiteSprint from $497." />
   <link rel="canonical" href="https://citesprint.tech/sample-audit.html" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://citesprint.tech/sample-audit.html" />
   <meta property="og:title" content="How AI engines evaluate developer tools — sample Checkly audit" />
   <meta property="og:description" content="Practice GEO-style audit: prompts, measured vs inferred sources, win/tie/lose. Not a customer case study. Founding CiteSprint $497." />
+  <meta property="og:image" content="https://citesprint.tech/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="CiteSprint" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="How AI engines evaluate developer tools — sample Checkly audit" />
   <meta name="twitter:description" content="Practice audit with real tables — how AI engines evaluate a developer tool. Claim a sprint from $497." />
+  <meta name="twitter:image" content="https://citesprint.tech/og-image.png" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -207,11 +211,11 @@
       <div class="wrap">
         <div class="section-label">Honesty first</div>
         <h2>What this sample actually used</h2>
-        <p class="lede">No invented multi-engine harness. Sources below are the ones behind the tables.</p>
+        <p class="lede">Plain sources only — no invented multi-engine screenshot claims. These are the ones behind the tables.</p>
         <div class="card">
           <ul class="clean" style="margin:0; color:var(--text-dim);">
             <li><strong style="color:var(--paper);">(A) Direct site checks</strong> — curl of robots.txt, <code>/llms.txt</code>, About/FAQ/vs URLs, homepage JSON-LD (Sep 19, 2026).</li>
-            <li><strong style="color:var(--paper);">(B) Third-party measured naming</strong> — Glotier Aug 3, 2026 study of who <strong style="color:var(--paper);">ChatGPT + Gemini</strong> name on classic uptime prompts (6 prompts); Reditus Aug 2026 ChatGPT citation maps for uptime software.</li>
+            <li><strong style="color:var(--paper);">(B) Third-party measured naming</strong> — <a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Glotier Aug 3, 2026 study</a> of who <strong style="color:var(--paper);">ChatGPT + Gemini</strong> name on classic uptime prompts (6 prompts); <a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus Aug 2026 ChatGPT citation maps</a> for uptime software.</li>
             <li><strong style="color:var(--paper);">(C) Inferred from public 2026 roundups</strong> — “best API / synthetic / Playwright monitoring” articles that engines often retrieve. Labeled <em>inferred</em>, not live chat transcripts.</li>
           </ul>
           <p class="tiny" style="margin:1rem 0 0;">We did <strong>not</strong> paste all five Checkly buyer prompts into a personal ChatGPT / Perplexity / AI Overviews login for this practice draft. Where a cell says “inferred,” treat it as retrieval context — not a screenshot claim.</p>
@@ -240,7 +244,7 @@
                 <td>1</td>
                 <td><strong>“best API monitoring tools for startups”</strong></td>
                 <td><span class="tag tag-tie">Tie / Partial</span></td>
-                <td>Inferred: 2026 API/synthetics roundups + Reditus cites checklyhq.com</td>
+                <td>Inferred: 2026 API/synthetics roundups + <a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus</a> cites checklyhq.com</td>
                 <td>Checkly alongside Datadog Synthetics, Postman Monitors, UptimeRobot, Better Stack, Hyperping</td>
               </tr>
               <tr>
@@ -275,7 +279,7 @@
                 <td>—</td>
                 <td><strong>Classic cluster: “best uptime monitoring tools”</strong> <span class="tiny">(category control)</span></td>
                 <td><span class="tag tag-lose">Lose</span></td>
-                <td><strong>Measured:</strong> Glotier ChatGPT + Gemini · 6 prompts · Aug 3, 2026</td>
+                <td><strong>Measured:</strong> <a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Glotier</a> ChatGPT + Gemini · 6 prompts · Aug 3, 2026</td>
                 <td>UptimeRobot, Hyperping, Better Stack, Uptime Kuma, Pingdom — <strong>Checkly often absent</strong> (different category framing)</td>
               </tr>
             </tbody>
@@ -289,7 +293,7 @@
       <div class="wrap">
         <div class="section-label">Category benchmark (third-party)</div>
         <h2>Glotier measured naming rates — classic uptime prompts</h2>
-        <p class="lede">Same Aug 2026 ChatGPT + Gemini run (6 prompts). Included so you can see what “measured rates” look like for the adjacent uptime cluster — <strong style="color:var(--paper);">not</strong> Checkly customer results.</p>
+        <p class="lede">Same <a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Aug 2026 ChatGPT + Gemini run</a> (6 prompts). Included so you can see what “measured rates” look like for the adjacent uptime cluster — <strong style="color:var(--paper);">not</strong> Checkly customer results. Glotier numbers kept as published.</p>
         <div class="table-wrap">
           <table>
             <thead>
@@ -333,7 +337,7 @@
             </tbody>
           </table>
         </div>
-        <p class="tiny">Reditus (Aug 2026) separately lists checklyhq.com among cited domains for uptime-software-style ChatGPT citation maps — useful signal that Checkly shows up in some retrieval paths even when classic uptime shortlists skip it.</p>
+        <p class="tiny"><a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus (Aug 2026)</a> separately lists checklyhq.com among cited domains for uptime-software-style ChatGPT citation maps — useful signal that Checkly shows up in some retrieval paths even when classic uptime shortlists skip it.</p>
       </div>
     </section>
 
@@ -402,7 +406,7 @@
         </div>
         <div class="card">
           <h3>3. Earn mentions where answers already come from</h3>
-          <p class="muted" style="margin:0;">For uptime-like topics, Aug 2026 Glotier measurements pointed at Reddit, Quora, YouTube, and vendor docs more than G2 for some engines. A perfect site with zero community proof still loses the shortlist.</p>
+          <p class="muted" style="margin:0;">For uptime-like topics, <a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Aug 2026 Glotier measurements</a> pointed at Reddit, Quora, YouTube, and vendor docs more than G2 for some engines. A perfect site with zero community proof still loses the shortlist.</p>
         </div>
       </div>
     </section>
@@ -433,8 +437,8 @@
         <h2>Not fabricated</h2>
         <ul class="clean">
           <li>Direct curl checks of robots.txt, llms.txt, key URLs, JSON-LD — Sep 19, 2026</li>
-          <li>Glotier: “Uptime monitoring tools: who ChatGPT and Gemini name (2026)” — measured prompts dated 2026-08-03 (third-party)</li>
-          <li>Reditus: “What ChatGPT Cites for uptime monitoring software” — August 2026 (third-party)</li>
+          <li><a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Glotier: “Uptime monitoring tools: who ChatGPT and Gemini name (2026)”</a> — measured prompts dated 2026-08-03 (third-party)</li>
+          <li><a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus: “What ChatGPT Cites for uptime monitoring software”</a> — August 2026 (third-party)</li>
           <li>Public 2026 API / synthetic monitoring roundups (retrieval context — labeled inferred)</li>
         </ul>
         <p class="tiny" style="margin-top:1.25rem;">CiteSprint ethics: no citation guarantees · no fake reviews · no cloaking · no spam.</p>

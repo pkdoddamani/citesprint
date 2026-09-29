@@ -8,7 +8,7 @@ Sales site for [citesprint.tech](https://citesprint.tech) — personal AI-answer
 3. **From $997** — standard (up to ~$1,500 by scope)
 
 ## Sprint package
-- Measured baseline (assistants actually used — no invented multi-engine roster)
+- Measured baseline (each report lists assistants actually used — no invented multi-engine roster)
 - FAQ + vs pages as **markdown / PR-ready** artifacts (not decks); JSON-LD notes where relevant
 - 2–3 credible mention pitches (awesome-lists, SO context, high-rep Reddit, niche indexes) — we draft; you send
 - Typical handoff: **~10 business days after kickoff**
@@ -17,6 +17,8 @@ Sales site for [citesprint.tech](https://citesprint.tech) — personal AI-answer
 ## Pages
 - `index.html` — sales page (Formspree micro-intake + hello@citesprint.tech)
 - `sample-audit.html` — practice sample audit (Checkly; not a customer case study)
+- `llms.txt` — plain-English product summary for AI crawlers / assistants
+- `og-image.png` — 1200×630 Open Graph / Twitter card image
 - `favicon.svg` — site icon
 - `robots.txt` — Allow / + Googlebot / Google-Extended / GPTBot / PerplexityBot / ClaudeBot
 - `sitemap.xml` — `/` + `/sample-audit.html`

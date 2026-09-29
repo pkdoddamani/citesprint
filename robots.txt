@@ -1,4 +1,5 @@
 # CiteSprint — allow search + AI crawlers (GitHub Pages; no Cloudflare bot wall)
+# Site summary for assistants: https://citesprint.tech/llms.txt
 User-agent: *
 Allow: /
 

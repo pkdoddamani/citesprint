@@ -1,0 +1,50 @@
+# CiteSprint
+
+> A productized GEO (generative engine optimization) sprint for developer tools and indie B2B SaaS founders who want to be named more often in AI answers to buyer questions.
+
+CiteSprint is a personal service by Praveen Doddamani — not a funded GEO platform or ongoing SaaS dashboard.
+
+## What it is
+- One focused sprint (~10 business days after kickoff to draft handoff)
+- Measured baseline of buyer prompts (win / tie / lose-style labels; null results allowed)
+- FAQ + honest comparison (“vs”) pages delivered as markdown or a PR-ready artifact
+- 2–3 ethical mention pitches (you send; typically under 10 minutes each)
+- Contact: hello@citesprint.tech
+- Site: https://citesprint.tech/
+
+## Who it is for
+- Indie developer-tool founders and small B2B SaaS teams
+- Products with real buyer prompts (e.g. “best X for Y”) where AI shortlists matter
+- Not a fit: consumer apps with no B2B prompts, brands already dominating every shortlist, or anyone needing a “guaranteed #1 in ChatGPT” promise
+
+## Pricing ladder (USD, one-time)
+1. $497 — founding (first 5; case-study rights)
+2. $747 — next 10
+3. From $997 — standard (up to ~$1,500 by scope, agreed in writing)
+
+Risk reducer on paid sprints: if the baseline already shows you are named on most agreed target prompts, we stop and refund.
+
+## What we measure
+- How often your brand is named on agreed buyer prompts (including control prompts we do not try to improve)
+- Each client report lists which assistants were actually used for that engagement
+- Direct site checks when useful (robots.txt, /llms.txt, key URLs, schema)
+- Practice / sample pages may also cite named third-party studies (e.g. Glotier ChatGPT+Gemini naming rates; Reditus ChatGPT citation maps) and clearly label inferred roundups
+
+## What we do not claim
+- No guarantee that ChatGPT, Perplexity, Gemini, AI Overviews, or any assistant will name you
+- No invented “we measured every engine on every prompt” claims
+- No fake reviews, cloaking, spam links, or purchased AI-mention packages
+- Technical files alone (robots, llms.txt, schema) do not fix rank by themselves
+- Sample audits on public sites are practice examples — not customer case studies
+
+## Free mini-audit
+Request via the form on https://citesprint.tech/#contact or email hello@citesprint.tech with product URL/GitHub, top 2 competitors, and a work email.
+
+## Key pages
+- https://citesprint.tech/
+- https://citesprint.tech/sample-audit.html
+- https://citesprint.tech/llms.txt
+
+## Optional / out of scope
+- Not ongoing social management, PPC, or a black-box monitoring SaaS
+- Optional brief notes on llms.txt / JSON-LD only if useful — not a hero deliverable
