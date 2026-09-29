@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CiteSprint — by Praveen Doddamani · Get named in AI answers</title>
+  <meta name="description" content="CiteSprint by Praveen Doddamani: a one-time AI answer visibility sprint (from $997). Free mini-audit: baseline buyer prompts, FAQ + vs pages, help placing 2–3 mentions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0c0a09;
+      --ink-2: #1c1917;
+      --ink-3: #292524;
+      --paper: #faf7f2;
+      --paper-muted: #e7e0d5;
+      --cream: #f5efe6;
+      --muted: #a8a29e;
+      --muted-light: #78716c;
+      --text: #faf7f2;
+      --text-dim: #d6d3d1;
+      --coral: #e07a5f;
+      --coral-soft: rgba(224, 122, 95, 0.14);
+      --coral-glow: rgba(224, 122, 95, 0.35);
+      --sage: #81b29a;
+      --sage-soft: rgba(129, 178, 154, 0.14);
+      --gold: #e9c46a;
+      --gold-soft: rgba(233, 196, 106, 0.16);
+      --border: rgba(231, 224, 213, 0.12);
+      --border-strong: rgba(231, 224, 213, 0.22);
+      --radius: 18px;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+      --max: 1120px;
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: "Outfit", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--ink);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(900px 500px at 8% -5%, rgba(224,122,95,0.16), transparent 55%),
+        radial-gradient(700px 420px at 92% 8%, rgba(129,178,154,0.1), transparent 50%),
+        radial-gradient(600px 400px at 50% 100%, rgba(233,196,106,0.06), transparent 45%);
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    a { color: var(--coral); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; position: relative; z-index: 1; }
+    .muted { color: var(--muted); }
+    .small { font-size: 0.9rem; }
+    .tiny { font-size: 0.8rem; color: var(--muted); }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(16px) saturate(1.2);
+      background: rgba(12, 10, 9, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 0; gap: 1rem;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-weight: 700; font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: var(--paper); text-decoration: none;
+      display: flex; flex-direction: column; gap: 0.1rem; line-height: 1.15;
+    }
+    .logo em {
+      font-style: italic; font-weight: 500;
+      color: var(--coral);
+    }
+    .logo .byline {
+      font-family: var(--sans);
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.02em;
+      color: var(--muted); font-style: normal;
+    }
+    .nav-links { display: flex; gap: 1.4rem; align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; text-decoration: none; }
+    .nav-links a:hover { color: var(--paper); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.45rem; padding: 0.8rem 1.3rem; border-radius: 999px;
+      font-family: var(--sans); font-weight: 600; font-size: 0.95rem;
+      border: 1px solid transparent; cursor: pointer;
+      text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, #e07a5f 0%, #c45d45 100%);
+      color: #fffaf7;
+      box-shadow: 0 10px 28px var(--coral-glow);
+    }
+    .btn-primary:hover { filter: brightness(1.08); color: #fffaf7; }
+    .btn-secondary {
+      background: transparent; color: var(--paper);
+      border-color: var(--border-strong);
+    }
+    .btn-secondary:hover { border-color: var(--paper-muted); background: rgba(250,247,242,0.04); color: var(--paper); }
+    .btn-lg { padding: 0.95rem 1.5rem; font-size: 1.02rem; }
+    .btn-ghost {
+      background: var(--ink-3); color: var(--paper);
+      border-color: var(--border);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0 4rem;
+      display: grid;
+      gap: 2.5rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.5rem;
+      align-items: end;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 0.85rem; border-radius: 999px;
+      background: var(--coral-soft); color: #f0b5a4;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em;
+      margin-bottom: 1.4rem;
+      border: 1px solid rgba(224,122,95,0.28);
+      animation: fadeUp 0.7s ease both;
+    }
+    .eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 3px rgba(224,122,95,0.25);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.35rem, 5.2vw, 3.55rem);
+      line-height: 1.08; letter-spacing: -0.035em;
+      margin: 0 0 1.15rem; font-weight: 650;
+      max-width: 14ch;
+      animation: fadeUp 0.75s 0.08s ease both;
+    }
+    h1 .accent {
+      font-style: italic; font-weight: 500;
+      color: var(--coral);
+      background: linear-gradient(120deg, transparent 0%, var(--coral-soft) 40%, transparent 100%);
+      background-size: 200% 100%;
+      padding: 0 0.08em;
+    }
+    .hero-sub {
+      font-size: 1.12rem; color: var(--text-dim);
+      max-width: 36rem; margin: 0 0 1.85rem;
+      animation: fadeUp 0.75s 0.16s ease both;
+    }
+    .cta-row {
+      display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center;
+      animation: fadeUp 0.75s 0.24s ease both;
+    }
+    .hero-note { margin-top: 1.1rem; animation: fadeUp 0.75s 0.3s ease both; }
+
+    .hero-card {
+      background: linear-gradient(165deg, rgba(250,247,242,0.06), rgba(250,247,242,0.02));
+      border: 1px solid var(--border-strong);
+      border-radius: calc(var(--radius) + 6px);
+      padding: 1.6rem 1.5rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--coral), var(--gold), var(--sage));
+    }
+    .hero-card .label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .founding-price {
+      display: flex; align-items: baseline; gap: 0.65rem; flex-wrap: wrap;
+      margin-bottom: 0.35rem;
+    }
+    .founding-price .big {
+      font-family: var(--serif);
+      font-size: 2.65rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1;
+      color: var(--paper);
+    }
+    .founding-price .strike {
+      font-size: 1.15rem; color: var(--muted);
+      text-decoration: line-through; text-decoration-thickness: 1.5px;
+    }
+    .hero-card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+    .hero-card .slots {
+      margin-top: 1.1rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .slot-chip {
+      font-size: 0.75rem; font-weight: 600;
+      padding: 0.3rem 0.65rem; border-radius: 999px;
+      background: var(--sage-soft); color: #a8d4c0;
+      border: 1px solid rgba(129,178,154,0.3);
+    }
+    .deliver-list {
+      list-style: none; padding: 0; margin: 0.85rem 0 0;
+      display: grid; gap: 0.45rem;
+    }
+    .deliver-list li {
+      display: flex; gap: 0.55rem; align-items: flex-start;
+      font-size: 0.88rem; color: var(--muted);
+      padding: 0.45rem 0.65rem; border-radius: 10px;
+      background: rgba(250,247,242,0.03); border: 1px solid var(--border);
+    }
+    .deliver-list li strong { color: var(--paper); font-weight: 600; }
+    .deliver-list .tick { color: var(--sage); font-weight: 700; flex-shrink: 0; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 3px rgba(224,122,95,0.25); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(224,122,95,0.1); }
+    }
+
+    /* Sections */
+    section { padding: 4rem 0; position: relative; z-index: 1; }
+    section.alt {
+      background: rgba(250,247,242,0.02);
+      border-block: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: var(--sans);
+      color: var(--coral); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.65rem;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+      letter-spacing: -0.03em; line-height: 1.18;
+      margin: 0 0 0.8rem; font-weight: 650;
+    }
+    .lede { color: var(--muted); max-width: 40rem; margin: 0 0 2.1rem; font-size: 1.05rem; }
+
+    /* Cards / grids */
+    .grid-2 { display: grid; gap: 1.25rem; grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { display: grid; gap: 1.25rem; grid-template-columns: repeat(3, 1fr); }
+    .card {
+      background: var(--ink-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.45rem 1.5rem;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+    .card h3 {
+      font-family: var(--serif);
+      margin: 0 0 0.5rem; font-size: 1.12rem; letter-spacing: -0.02em; font-weight: 650;
+    }
+    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .icon-pill {
+      width: 2.2rem; height: 2.2rem; border-radius: 10px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--coral-soft); color: var(--coral);
+      font-weight: 700; margin-bottom: 0.9rem; font-size: 0.85rem;
+      font-family: var(--serif);
+    }
+
+    /* Problem contrast */
+    .vs {
+      display: grid; gap: 1.1rem; grid-template-columns: 1fr auto 1fr; align-items: stretch;
+    }
+    .vs-or {
+      align-self: center; color: var(--muted); font-weight: 700;
+      font-size: 0.8rem; letter-spacing: 0.06em;
+      font-family: var(--serif); font-style: italic;
+    }
+    .bad { background: rgba(248,113,113,0.08); border-color: rgba(248,113,113,0.22); }
+    .good { background: var(--sage-soft); border-color: rgba(129,178,154,0.32); }
+    .tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: 0.65rem; padding: 0.25rem 0.55rem; border-radius: 6px;
+    }
+    .tag-bad { background: rgba(248,113,113,0.18); color: #fca5a5; }
+    .tag-good { background: rgba(129,178,154,0.22); color: #a8d4c0; }
+
+    /* Steps */
+    .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+    .steps li {
+      display: grid; grid-template-columns: auto 1fr; gap: 1.1rem;
+      background: var(--ink-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.35rem;
+      transition: border-color 0.25s ease;
+    }
+    .steps li:hover { border-color: rgba(224,122,95,0.35); }
+    .num {
+      width: 2.15rem; height: 2.15rem; border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), #c45d45);
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-weight: 700; font-size: 0.95rem; flex-shrink: 0;
+    }
+    .steps h3 { margin: 0 0 0.3rem; font-size: 1.05rem; font-family: var(--serif); font-weight: 650; }
+    .steps p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    code {
+      font-size: 0.88em; background: rgba(250,247,242,0.06);
+      padding: 0.1em 0.35em; border-radius: 4px; color: var(--gold);
+    }
+
+    /* Proof */
+    .proof-box {
+      background: linear-gradient(155deg, rgba(224,122,95,0.1), rgba(129,178,154,0.06));
+      border: 1px solid rgba(224,122,95,0.28);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 1.65rem 1.7rem;
+      position: relative;
+    }
+    .proof-box .example-flag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--gold);
+      background: var(--gold-soft); border: 1px solid rgba(233,196,106,0.35);
+      padding: 0.3rem 0.7rem; border-radius: 999px; margin-bottom: 0.9rem;
+    }
+    .score-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--gold-soft); color: var(--gold);
+      border: 1px solid rgba(233,196,106,0.4);
+      padding: 0.35rem 0.8rem; border-radius: 999px;
+      font-weight: 700; font-size: 0.88rem; margin: 0.7rem 0 1rem;
+    }
+    .proof-box ul { margin: 0.5rem 0 0; padding-left: 1.15rem; color: var(--muted); }
+    .proof-box li { margin-bottom: 0.4rem; }
+
+    /* Pricing */
+    .price-grid { display: grid; gap: 1.35rem; grid-template-columns: 1.4fr 0.9fr; align-items: stretch; }
+    .price-card {
+      background: var(--ink-2); border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px); padding: 1.85rem;
+      position: relative;
+    }
+    .price-card.featured {
+      border-color: rgba(224,122,95,0.5);
+      box-shadow: 0 0 0 1px rgba(224,122,95,0.2), var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(224,122,95,0.12) 0%, var(--ink-2) 38%);
+    }
+    .badge {
+      position: absolute; top: -0.75rem; right: 1.35rem;
+      background: linear-gradient(135deg, var(--coral), #c45d45);
+      color: white;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 0.35rem 0.75rem; border-radius: 999px;
+    }
+    .price-tier-label {
+      font-size: 0.85rem; font-weight: 600; color: var(--sage);
+      margin: 0.85rem 0 0.25rem;
+    }
+    .price {
+      font-family: var(--serif);
+      font-size: 3rem; font-weight: 700; letter-spacing: -0.04em;
+      margin: 0.15rem 0 0.2rem; line-height: 1;
+      display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+    }
+    .price .unit { font-size: 1rem; font-weight: 500; font-family: var(--sans); color: var(--muted); letter-spacing: 0; }
+    .price-clarity {
+      background: rgba(129,178,154,0.1);
+      border: 1px solid rgba(129,178,154,0.25);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      margin: 1rem 0 0.25rem;
+      font-size: 0.9rem; color: var(--text-dim);
+    }
+    .price-clarity strong { color: var(--sage); }
+    .price-card ul {
+      list-style: none; padding: 0; margin: 1.2rem 0 1.5rem;
+    }
+    .price-card li {
+      padding: 0.5rem 0 0.5rem 1.55rem; position: relative;
+      color: var(--muted); font-size: 0.95rem;
+      border-bottom: 1px solid rgba(231,224,213,0.06);
+    }
+    .price-card li::before {
+      content: "✓"; position: absolute; left: 0; color: var(--sage); font-weight: 700;
+    }
+    .addon-note {
+      font-size: 0.85rem; color: var(--muted); margin-top: 1rem;
+      padding-top: 1rem; border-top: 1px dashed var(--border);
+    }
+    .founding-box {
+      margin-top: 1.35rem;
+      display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(12rem, 0.55fr);
+      gap: 1rem 1.5rem; align-items: center;
+      padding: 1.35rem 1.5rem;
+      background: linear-gradient(135deg, rgba(233,196,106,0.11), rgba(224,122,95,0.08));
+      border: 1px solid rgba(233,196,106,0.34);
+      border-radius: calc(var(--radius) + 2px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.18);
+    }
+    .founding-box h3 {
+      margin: 0.15rem 0 0.35rem; font-family: var(--serif);
+      font-size: 1.35rem; letter-spacing: -0.02em;
+    }
+    .founding-box p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+    .founding-box .section-label { color: var(--gold); margin: 0; }
+    .founding-box-rate { text-align: right; }
+    .founding-box-price {
+      display: block; font-family: var(--serif); font-size: 2.45rem;
+      font-weight: 700; line-height: 1; letter-spacing: -0.04em; color: var(--paper);
+    }
+    .founding-box-rate span:last-child { display: block; margin-top: 0.35rem; color: var(--gold); font-size: 0.86rem; font-weight: 600; }
+    .founding-box-trade {
+      grid-column: 1 / -1; padding-top: 1rem;
+      border-top: 1px solid rgba(233,196,106,0.2);
+    }
+    .founding-box strong { color: var(--paper); }
+
+    /* Ethics */
+    .wont { display: grid; gap: 0.85rem; grid-template-columns: repeat(2, 1fr); }
+    .wont-item {
+      display: flex; gap: 0.8rem; align-items: flex-start;
+      padding: 1.1rem 1.15rem; border-radius: 14px;
+      background: var(--ink-2); border: 1px solid var(--border);
+    }
+    .wont-item strong { display: block; margin-bottom: 0.2rem; font-family: var(--serif); }
+    .xmark { color: #f87171; font-weight: 800; flex-shrink: 0; margin-top: 0.15rem; }
+
+    /* FAQ */
+    details {
+      background: var(--ink-2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.05rem 1.2rem; margin-bottom: 0.65rem;
+      transition: border-color 0.2s ease;
+    }
+    details[open] { border-color: rgba(224,122,95,0.35); }
+    summary {
+      cursor: pointer; font-weight: 600; list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      font-size: 1rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+"; color: var(--coral); font-size: 1.35rem; font-weight: 400;
+      font-family: var(--serif); transition: transform 0.2s ease;
+    }
+    details[open] summary::after { content: "–"; }
+    details p { margin: 0.8rem 0 0; color: var(--muted); font-size: 0.95rem; }
+
+    /* Final CTA */
+    .final {
+      text-align: center; padding: 3.75rem 1.75rem;
+      background: linear-gradient(155deg, rgba(224,122,95,0.14), rgba(129,178,154,0.08));
+      border: 1px solid rgba(224,122,95,0.3);
+      border-radius: calc(var(--radius) + 8px);
+      position: relative; overflow: hidden;
+    }
+    .final::before {
+      content: "";
+      position: absolute; inset: -40% -20%;
+      background: radial-gradient(circle at 30% 50%, rgba(224,122,95,0.12), transparent 45%);
+      pointer-events: none; animation: drift 12s ease-in-out infinite alternate;
+    }
+    @keyframes drift {
+      from { transform: translateX(-4%); }
+      to { transform: translateX(4%); }
+    }
+    .final h2 { max-width: 16ch; margin-inline: auto; position: relative; }
+    .final .lede { margin-inline: auto; position: relative; }
+    .final .cta-row { position: relative; justify-content: center; }
+
+    footer {
+      padding: 2.75rem 0 3.25rem; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.9rem; position: relative; z-index: 1;
+    }
+    footer .foot-row {
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 1rem; align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid, .grid-2, .grid-3, .price-grid, .wont, .vs { grid-template-columns: 1fr; }
+      .vs-or { text-align: center; }
+      .nav-links .hide-sm { display: none; }
+      h1 { max-width: none; }
+      .hero { padding-top: 3.25rem; }
+      .founding-price .big { font-size: 2.2rem; }
+      .price { font-size: 2.5rem; }
+      .founding-box { grid-template-columns: 1fr; }
+      .founding-box-rate { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Contact: hello@citesprint.example — swap for a real inbox when ready; keep all mailto: links in sync. -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="#">Cite<em>Sprint</em><span class="byline">by Praveen Doddamani</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="hide-sm" href="#problem">Problem</a>
+        <a class="hide-sm" href="#included">Sprint</a>
+        <a class="hide-sm" href="#pricing">Pricing</a>
+        <a class="hide-sm" href="#faq">FAQ</a>
+        <a class="btn btn-primary" href="mailto:hello@citesprint.example?subject=Free%20mini-audit">Free mini-audit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Personal service · indie B2B SaaS · API / uptime / synthetics</div>
+            <h1>Stop watching AI answers. Start getting <span class="accent">named</span> in them.</h1>
+            <p class="hero-sub">
+              <strong style="color:var(--paper);">CiteSprint</strong> is a productized sprint by
+              <strong style="color:var(--paper);">Praveen Doddamani</strong>: a measured baseline of the buyer prompts that matter,
+              FAQ and “vs” pages you can publish, and hands-on help placing 2–3 ethical third-party mentions.
+              Unlike a monitoring dashboard, the goal is getting you on the shortlist — not more charts about who already is.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary btn-lg" href="mailto:hello@citesprint.example?subject=Free%20mini-audit">Request a free mini-audit</a>
+              <a class="btn btn-secondary btn-lg" href="#pricing">See pricing</a>
+            </div>
+            <p class="hero-note tiny">Free mini-audit · no citation guarantees · no fake reviews · Email in the buttons — reply there to start.</p>
+          </div>
+          <aside class="hero-card" aria-label="Offer summary">
+            <div class="label">One-time sprint</div>
+            <div class="founding-price">
+              <span class="big">From $997</span>
+            </div>
+            <p style="margin-bottom:0.35rem;">Up to ~$1,500 if scope needs it. Scope agreed in writing before you pay.</p>
+            <ul class="deliver-list">
+              <li><span class="tick" aria-hidden="true">✓</span> <span><strong>Measured baseline</strong> — naming rate across many runs; null is possible</span></li>
+              <li><span class="tick" aria-hidden="true">✓</span> <span><strong>FAQ + vs pages</strong> — drafts you can publish</span></li>
+              <li><span class="tick" aria-hidden="true">✓</span> <span><strong>Help placing 2–3 mentions</strong> — with you, not a homework dump</span></li>
+            </ul>
+            <div class="slots">
+              <span class="slot-chip">Founding availability · first 5 clients</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section id="problem" class="alt">
+      <div class="wrap">
+        <div class="section-label">The problem</div>
+        <h2>Watching the scoreboard ≠ getting on the roster</h2>
+        <p class="lede">
+          Founders buy tools that track whether ChatGPT or Perplexity mention competitors.
+          Useful — until you realize the gap is not “more charts.” It’s that AI has nothing clean to cite about <em>you</em>.
+        </p>
+        <div class="vs">
+          <div class="card bad">
+            <span class="tag tag-bad">Paying to watch</span>
+            <h3>Dashboards &amp; alerts about AI answers</h3>
+            <p>You learn who got named last week. You still lack FAQ pages, comparison pages, and plain-language facts that models can retrieve and quote.</p>
+          </div>
+          <div class="vs-or">vs</div>
+          <div class="card good">
+            <span class="tag tag-good">CiteSprint</span>
+            <h3>Baseline the prompts. Ship the pages.</h3>
+            <p>We pick the questions buyers actually ask, score how often you’re named, then deliver FAQ + vs pages and hands-on help placing 2–3 ethical mentions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO -->
+    <section id="who">
+      <div class="wrap">
+        <div class="section-label">Who it’s for</div>
+        <h2>Indie &amp; early B2B SaaS — especially API / uptime / synthetics</h2>
+        <p class="lede">Built for founders who ship product, not for enterprise SEO departments. First focus: tools that compete on “best API / uptime / synthetic monitoring” shortlists.</p>
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon-pill">01</div>
+            <h3>API, uptime &amp; synthetics</h3>
+            <p>Synthetic checks, Playwright monitors, status pages, on-call — where buyer prompts are clear and mid-tier tools often lose everyday wording to bigger names.</p>
+          </div>
+          <div class="card">
+            <div class="icon-pill">02</div>
+            <h3>Indie / early B2B SaaS</h3>
+            <p>You have a real product and some traction, but AI shortlists still name the giants. You need a focused sprint, not a six-month retainer.</p>
+          </div>
+          <div class="card">
+            <div class="icon-pill">03</div>
+            <h3>Not a fit (yet)</h3>
+            <p>Consumer apps with no B2B buyer prompts, brands already dominating every AI shortlist, or anyone who needs “guaranteed #1 in ChatGPT.” We’ll say so in the free mini-audit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INCLUDED -->
+    <section id="included" class="alt">
+      <div class="wrap">
+        <div class="section-label">What’s in the sprint</div>
+        <h2>What’s included — plain English</h2>
+        <p class="lede">One focused sprint. Deliverables you can open, edit, and ship — not a homework dump. From <strong style="color:var(--paper);">$997</strong> one-time (up to ~$1,500 if scope needs it).</p>
+        <ol class="steps">
+          <li>
+            <span class="num">1</span>
+            <div>
+              <h3>Measured baseline</h3>
+              <p>We map buyer questions that create pipeline, mark win / tie / lose, and note who AI tends to name. If nothing moved or you’re barely there, we say so in plain English. Null results are allowed.</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <div>
+              <h3>FAQ + honest “vs” pages</h3>
+              <p>Draft FAQ and 2–3 comparison pages written so assistants can quote you without inventing claims. Founder-ready copy you can paste into your site or CMS.</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">3</span>
+            <div>
+              <h3>Help placing 2–3 third-party mentions</h3>
+              <p>Not just a list of links to chase. We help you pick ethical roundups, community threads, and docs-adjacent places — draft pitches and chase <strong style="color:var(--paper);">2–3 targets with you</strong>. If a placement isn’t realistic, we say so and coach the next best move.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="tiny" style="margin-top:1.25rem;">Optional extra only (if useful for your stack): brief notes on technical files like <code>llms.txt</code> or schema — helpful, not a core deliverable.</p>
+      </div>
+    </section>
+
+    <!-- MEASUREMENT -->
+    <section id="measurement">
+      <div class="wrap">
+        <div class="section-label">How measurement works</div>
+        <h2>Plain English — no fake certainty</h2>
+        <p class="lede">
+          I run each buyer prompt many times and score how often your brand is named, including control prompts I don’t try to improve — so a null result is possible.
+          Engine coverage is expanding; I’ll tell you exactly which assistants each report used.
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>What you’ll hear</h3>
+            <p>Whether you’re often named but ranked late, strong only on niche wording (for example Playwright / synthetics), weak on other prompt types, or barely named at all. A nice website file alone usually doesn’t close those gaps.</p>
+          </div>
+          <div class="card">
+            <h3>What we won’t pretend</h3>
+            <p>That one screenshot proves a win. That technical files fix rank by themselves. That anyone can guarantee ChatGPT will name you next week. If the baseline is null or flat, you’ll hear that first.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREE MINI AUDIT -->
+    <section id="mini-audit" class="alt">
+      <div class="wrap">
+        <div class="section-label">Primary next step</div>
+        <h2>Free mini-audit</h2>
+        <p class="lede">
+          Free mini-audit (about 45 minutes of async work): I check a short set of buyer prompts and send you a plain written baseline.
+          Optional short call only if you want it. Free audits are limited so quality stays high.
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>What you send</h3>
+            <p>Your domain, a short product one-liner, and either five prompts you care about — or “help me pick.” Email is enough; a short call works too if you prefer.</p>
+          </div>
+          <div class="card">
+            <h3>What you get back</h3>
+            <p>A short written audit: who tends to get named, three priorities, and whether a CiteSprint is even a fit — Citation-ready, Partial, or barely there. Honest labels on how we scored.</p>
+          </div>
+        </div>
+        <div class="cta-row" style="margin-top: 1.6rem;">
+          <a class="btn btn-primary" href="mailto:hello@citesprint.example?subject=Free%20mini-audit">Request your free mini-audit</a>
+          <a class="btn btn-secondary" href="#intake">See intake fields</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAMPLE PROOF — honest Checkly -->
+    <section id="sample">
+      <div class="wrap">
+        <div class="section-label">Sample proof</div>
+        <h2>Example audit on a public developer tool (Checkly)</h2>
+        <p class="lede">Framed carefully: this is an <strong style="color:var(--paper);">example audit</strong> on a public site — a Partial score insight, not a customer claim that CiteSprint works for Checkly.</p>
+        <div class="proof-box">
+          <div class="example-flag">Example · not a customer</div>
+          <strong>Product (public site):</strong> Checkly · checklyhq.com<br />
+          <div class="score-pill">Score insight: Partial</div>
+          <p class="muted" style="margin:0 0 0.75rem;">
+            Often named on API / uptime-style prompts, but ranked late in the shortlist.
+            Stronger when buyers ask about Playwright / synthetics.
+            Weaker on status-page-style prompts.
+            Site files (robots, <code>llms.txt</code>, schema) helped clarity — they did <em>not</em> fix rank by themselves.
+          </p>
+          <strong>What that teaches (for any similar tool):</strong>
+          <ul>
+            <li>Being named is not the same as being ranked early — measure both.</li>
+            <li>Prompt type matters: niche wording (Playwright / synthetics) can look stronger than status-page prompts.</li>
+            <li>Missing FAQ and “vs” pages leave third parties in control of the story AI quotes.</li>
+            <li>Files alone don’t close the gap — quotable pages and mentions do more of the work.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="alt">
+      <div class="wrap">
+        <div class="section-label">How it works</div>
+        <h2>Four steps. About a week of guided work.</h2>
+        <div class="grid-2">
+          <div class="card">
+            <div class="icon-pill">1</div>
+            <h3>Free mini-audit</h3>
+            <p>About 45 minutes of async work. Plain written baseline. Top issues. We only invite a paid sprint if it looks useful.</p>
+          </div>
+          <div class="card">
+            <div class="icon-pill">2</div>
+            <h3>Kickoff &amp; measured baseline</h3>
+            <p>Confirm ICP, competitors, and the questions that matter. Align on honesty rules and how we’ll measure naming rate.</p>
+          </div>
+          <div class="card">
+            <div class="icon-pill">3</div>
+            <h3>We draft; you approve &amp; ship</h3>
+            <p>You get FAQ + vs page copy and concrete help placing 2–3 mentions — ready to paste and pursue. Optional <code>llms.txt</code> notes only if useful.</p>
+          </div>
+          <div class="card">
+            <div class="icon-pill">4</div>
+            <h3>Re-test checklist</h3>
+            <p>You re-check the same prompts yourself with a simple checklist so progress is visible, not promised.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="wrap">
+        <div class="section-label">Pricing</div>
+        <h2>Crystal-clear pricing.</h2>
+        <p class="lede">Start free with the mini-audit. The paid sprint is one-time — from $997, up to ~$1,500 if scope needs it.</p>
+        <div class="price-grid">
+          <div class="price-card featured">
+            <span class="badge">Start here</span>
+            <div class="section-label" style="margin:0;">Free mini-audit</div>
+            <div class="price" style="font-size:2.4rem;">$0</div>
+            <p class="muted small" style="margin:0.5rem 0 1rem;"><strong style="color:var(--paper);">About 45 minutes of async work</strong> — I check a short set of buyer prompts and send a plain written baseline. Optional short call only if you want it.</p>
+            <ul>
+              <li>Buyer-intent prompts checked and summarized</li>
+              <li>Top fixable issues in founder language</li>
+              <li>Honest fit check for the paid sprint</li>
+            </ul>
+            <a class="btn btn-primary btn-lg" href="mailto:hello@citesprint.example?subject=Free%20mini-audit">Request free mini-audit</a>
+            <p class="tiny" style="margin-top:0.85rem;">Free audits are limited so quality stays high. No payment required.</p>
+          </div>
+          <div class="price-card">
+            <div class="section-label" style="margin:0;">CiteSprint</div>
+            <p class="price-tier-label" style="margin-top:0.5rem;">One-time productized sprint · one product / domain</p>
+            <div class="price" style="font-size:2.4rem;">From $997 <span class="unit">one-time</span></div>
+            <div class="price-clarity">
+              Up to ~$1,500 if scope needs it (prompts, pages, mention targets). <strong>Scope agreed in writing</strong> before you pay.
+            </div>
+            <ul>
+              <li>Measured baseline + honest measurement notes</li>
+              <li>FAQ + 2–3 “vs” pages drafted</li>
+              <li>Help placing 2–3 third-party mentions</li>
+              <li>Before/after re-test checklist</li>
+            </ul>
+            <p class="tiny" style="margin:-0.5rem 0 1rem;">Optional: brief technical-file notes (e.g. <code>llms.txt</code> / schema) if useful — not a hero deliverable.</p>
+            <a class="btn btn-secondary" href="mailto:hello@citesprint.example?subject=CiteSprint%20—%20interested%20after%20mini-audit">Email about a sprint (after mini-audit)</a>
+            <p class="tiny" style="margin-top:0.85rem;">Email in the buttons — reply there to start.</p>
+          </div>
+        </div>
+        <div class="founding-box" aria-label="Founding clients offer">
+          <div>
+            <div class="section-label">Founding clients</div>
+            <h3>Founding rate for the first five clients</h3>
+            <p><strong>Standard:</strong> From $997 (up to ~$1,500 by scope), scope agreed in writing.</p>
+          </div>
+          <div class="founding-box-rate">
+            <span class="founding-box-price">$497</span>
+            <span>for the first 5 clients only</span>
+          </div>
+          <p class="founding-box-trade"><strong>Trade:</strong> In exchange for permission to publish before/after results (named or anonymized) and a short candid quote; if published, we’ll note that you received the founding rate. No positive review is required.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETHICS -->
+    <section id="ethics" class="alt">
+      <div class="wrap">
+        <div class="section-label">Ethics</div>
+        <h2>What we won’t do</h2>
+        <p class="lede">AI citation work only helps if it’s durable and honest. We refuse shortcuts that burn trust — and we won’t sell you certainty we can’t defend.</p>
+        <div class="wont">
+          <div class="wont-item">
+            <span class="xmark" aria-hidden="true">✕</span>
+            <div><strong>No citation guarantees</strong><span class="muted small"> Models change. We improve your odds with real pages and proof — we don’t sell “guaranteed #1 in ChatGPT.”</span></div>
+          </div>
+          <div class="wont-item">
+            <span class="xmark" aria-hidden="true">✕</span>
+            <div><strong>No fake reviews</strong><span class="muted small"> We won’t invent G2/Capterra stars, Reddit praise, or testimonials.</span></div>
+          </div>
+          <div class="wont-item">
+            <span class="xmark" aria-hidden="true">✕</span>
+            <div><strong>No cloaking</strong><span class="muted small"> Humans and AI get the same truthful story. No secret bait pages.</span></div>
+          </div>
+          <div class="wont-item">
+            <span class="xmark" aria-hidden="true">✕</span>
+            <div><strong>No spam</strong><span class="muted small"> No mass link schemes, comment spam, or purchased “AI mention” packages.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-label">FAQ</div>
+        <h2>Plain questions, plain answers</h2>
+        <div style="margin-top:1.5rem;">
+          <details>
+            <summary>Is this another AI-mention monitoring tool?</summary>
+            <p>No. Monitoring tells you who got named. CiteSprint is a productized sprint: baseline your buyer prompts, ship FAQ + vs pages, and get real help placing 2–3 ethical mentions — so you have something worth naming.</p>
+          </details>
+          <details>
+            <summary>What’s the price?</summary>
+            <p><strong>From $997</strong> one-time for the paid sprint — up to ~$1,500 if scope needs it. Exact number depends on prompts, pages, and mention targets, agreed in writing before you pay.</p>
+          </details>
+          <details>
+            <summary>Will you guarantee that ChatGPT names us?</summary>
+            <p>No — and be wary of anyone who does. We improve crawlability, quotable facts, and category language. Re-testing is built in so you can see movement yourself.</p>
+          </details>
+          <details>
+            <summary>Who is the first ideal customer?</summary>
+            <p>Indie and early B2B SaaS, especially API / uptime / synthetic monitoring tools that want clearer naming on buyer prompts — without buying another dashboard.</p>
+          </details>
+          <details>
+            <summary>What’s the free mini-audit, really?</summary>
+            <p>About 45 minutes of async work: I check a short set of buyer prompts and send you a plain written baseline — score-style labels (Citation-ready / Partial / barely there) and fixable priorities. Optional short call only if you want it. It’s also how we decide if the paid sprint is a fit. Free audits are limited so quality stays high.</p>
+          </details>
+          <details>
+            <summary>Do I need a developer on my team?</summary>
+            <p>Helpful but not required. Deliverables are written for founders: copy you can paste into Webflow/Framer/docs, plus clear notes for whoever touches robots.txt or schema.</p>
+          </details>
+          <details>
+            <summary>How long does the sprint take?</summary>
+            <p>About a week of guided work from kickoff to draft handoff, depending on how fast you answer a few questions. Shipping pages on your site is on your timeline.</p>
+          </details>
+          <details>
+            <summary>How do you measure “getting named” if AI answers change?</summary>
+            <p>See the measurement section above: I run each buyer prompt many times (including control prompts I don’t try to improve) and score naming rate — so a null result is possible. Each report says which assistants were used.</p>
+          </details>
+          <details>
+            <summary>Is CiteSprint a company / funded GEO platform?</summary>
+            <p>No. CiteSprint is the product name for this personal sprint by Praveen Doddamani. Currently taking a small number of clients.</p>
+          </details>
+          <details>
+            <summary>How do I get started?</summary>
+            <p>Email hello@citesprint.example (or use any of the buttons on this page) and request the free mini-audit. Reply there to start.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTAKE TEASER -->
+    <section id="intake" class="alt">
+      <div class="wrap">
+        <div class="section-label">Start here</div>
+        <h2>Request a free mini-audit</h2>
+        <p class="lede">Send one email with these fields:</p>
+        <div class="card">
+          <p style="margin:0; color: var(--muted);">
+            <strong style="color:var(--paper);">1.</strong> Your name &amp; email<br />
+            <strong style="color:var(--paper);">2.</strong> Product name &amp; domain<br />
+            <strong style="color:var(--paper);">3.</strong> One sentence: what you sell &amp; to whom<br />
+            <strong style="color:var(--paper);">4.</strong> Five buyer prompts <em>or</em> write “help me pick”<br />
+            <strong style="color:var(--paper);">5.</strong> (Optional) 2–3 competitors you hear most often
+          </p>
+          <div class="cta-row" style="margin-top:1.25rem;">
+            <a class="btn btn-primary" href="mailto:hello@citesprint.example?subject=Free%20mini-audit&body=Name%3A%0AEmail%3A%0AProduct%3A%0ADomain%3A%0AOne-liner%3A%0APrompts%20(or%20%22help%20me%20pick%22)%3A%0ACompetitors%20(optional)%3A">Open email with template</a>
+          </div>
+          <p class="tiny" style="margin-top:1rem; margin-bottom:0;">Email in the buttons — reply there to start.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section>
+      <div class="wrap">
+        <div class="final">
+          <h2>Get named where buyers already ask.</h2>
+          <p class="lede">Start with a free mini-audit. If a sprint makes sense, we’ll say so — and if it doesn’t, we’ll say that too.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-lg" href="mailto:hello@citesprint.example?subject=Free%20mini-audit">Get the free mini-audit</a>
+            <a class="btn btn-secondary btn-lg" href="#pricing">From $997</a>
+          </div>
+          <p class="tiny" style="margin-top:1.1rem; position:relative;">~45 min async · hello@citesprint.example · by Praveen Doddamani</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-row">
+      <div>
+        <strong style="color:var(--paper); font-family:var(--serif);">CiteSprint</strong>
+        <div class="tiny">by Praveen Doddamani · personal service · Sep 2026</div>
+        <div class="tiny" style="margin-top:0.35rem;">Currently taking a small number of clients.</div>
+      </div>
+      <div class="tiny">
+        No citation guarantees · No fake reviews · No cloaking · No spam<br />
+        <a href="mailto:hello@citesprint.example">hello@citesprint.example</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
