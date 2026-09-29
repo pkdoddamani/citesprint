@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sample practice audit: Checkly — CiteSprint</title>
-  <meta name="description" content="Practice / sample AI-answer visibility audit on Checkly (public developer tool). Not a customer case study. Honest sources: site checks, Glotier ChatGPT+Gemini (Aug 2026), Reditus citation maps, public roundups." />
+  <title>How AI engines evaluate developer tools — sample Checkly audit | CiteSprint</title>
+  <meta name="description" content="See how AI engines evaluate a public developer tool: buyer prompts, win/tie/lose labels, and honest sources (site checks, Glotier ChatGPT+Gemini, Reditus). Practice sample — not a customer case study. Claim a CiteSprint from $497." />
   <link rel="canonical" href="https://citesprint.tech/sample-audit.html" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://citesprint.tech/sample-audit.html" />
-  <meta property="og:title" content="Sample practice audit: Checkly — CiteSprint" />
-  <meta property="og:description" content="Practice audit with real tables: prompts, engines/sources used, win/tie/lose labels. Not a customer case study." />
+  <meta property="og:title" content="How AI engines evaluate developer tools — sample Checkly audit" />
+  <meta property="og:description" content="Practice GEO-style audit: prompts, measured vs inferred sources, win/tie/lose. Not a customer case study. Founding CiteSprint $497." />
   <meta property="og:site_name" content="CiteSprint" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Sample practice audit: Checkly — CiteSprint" />
-  <meta name="twitter:description" content="Practice audit with real tables — not a customer case study." />
+  <meta name="twitter:title" content="How AI engines evaluate developer tools — sample Checkly audit" />
+  <meta name="twitter:description" content="Practice audit with real tables — how AI engines evaluate a developer tool. Claim a sprint from $497." />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -141,6 +141,27 @@
     @media (max-width: 640px) {
       .nav-links .hide-sm { display: none; }
     }
+
+    /* Sticky claim-sprint CTA */
+    .sticky-cta {
+      position: sticky; bottom: 0; z-index: 40;
+      backdrop-filter: blur(14px) saturate(1.15);
+      background: rgba(12,10,9,0.92);
+      border-top: 1px solid rgba(224,122,95,0.35);
+      box-shadow: 0 -12px 40px rgba(0,0,0,0.35);
+    }
+    .sticky-cta-inner {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 0.85rem; padding: 0.85rem 0;
+    }
+    .sticky-cta p { margin: 0; color: var(--text-dim); font-size: 0.92rem; max-width: 36rem; }
+    .sticky-cta strong { color: var(--paper); }
+    .sticky-cta .price { color: var(--gold); font-weight: 700; }
+    body { padding-bottom: 4.5rem; }
+    @media (max-width: 640px) {
+      .sticky-cta-inner { flex-direction: column; align-items: stretch; text-align: center; }
+      .sticky-cta .btn { width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -166,7 +187,7 @@
         </div>
 
         <p class="section-label" style="margin-top:1.75rem;">Sample practice audit</p>
-        <h1>Checkly — AI answer visibility baseline</h1>
+        <h1>How AI engines evaluate a developer tool — Checkly baseline</h1>
         <p class="lede">
           A founder-readable look at whether AI assistants are likely to <strong style="color:var(--paper);">name Checkly</strong>
           when buyers ask for tools — with honest labels on what was measured vs inferred.
@@ -400,8 +421,8 @@
           <p class="tiny" style="margin:1rem 0 0;">Pricing ladder: <strong style="color:var(--paper);">$497</strong> founding (first 5, case-study rights) → <strong style="color:var(--paper);">$747</strong> (next 10) → <strong style="color:var(--paper);">from $997</strong> (up to ~$1,500 by scope). Risk reducer on paid sprints: if baseline already shows you’re named on most target prompts, we stop and refund.</p>
         </div>
         <div class="cta-row">
-          <a class="btn btn-primary" href="/#contact">Request a free mini-audit</a>
-          <a class="btn btn-secondary" href="/">Back to CiteSprint</a>
+          <a class="btn btn-primary" href="/#contact">Claim sprint / founding $497</a>
+          <a class="btn btn-secondary" href="/#contact">Free mini-audit first</a>
         </div>
       </div>
     </section>
@@ -420,6 +441,14 @@
       </div>
     </section>
   </main>
+
+
+  <aside class="sticky-cta" aria-label="Claim CiteSprint">
+    <div class="wrap sticky-cta-inner">
+      <p><strong>Claim a CiteSprint</strong> — founding <span class="price">$497</span> while first-5 spots remain. Free mini-audit first.</p>
+      <a class="btn btn-primary" href="/#contact">Claim sprint / $497</a>
+    </div>
+  </aside>
 
   <footer>
     <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;">

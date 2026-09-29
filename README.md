@@ -18,6 +18,8 @@ Sales site for [citesprint.tech](https://citesprint.tech) — personal AI-answer
 - `index.html` — sales page (Formspree micro-intake + hello@citesprint.tech)
 - `sample-audit.html` — practice sample audit (Checkly; not a customer case study)
 - `favicon.svg` — site icon
+- `robots.txt` — Allow / + Googlebot / Google-Extended / GPTBot / PerplexityBot / ClaudeBot
+- `sitemap.xml` — `/` + `/sample-audit.html`
 - `CNAME` — citesprint.tech
 
 Published via GitHub Pages from `main`.

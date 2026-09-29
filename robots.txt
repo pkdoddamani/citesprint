@@ -1,0 +1,20 @@
+# CiteSprint — allow search + AI crawlers (GitHub Pages; no Cloudflare bot wall)
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://citesprint.tech/sitemap.xml
