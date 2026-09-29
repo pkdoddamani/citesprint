@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CiteSprint — by Praveen Doddamani · Get named in AI answers</title>
-  <meta name="description" content="CiteSprint by Praveen Doddamani: founding $497 (first 5), then $747 (next 10), then from $997. Free mini-audit, FAQ + vs pages, pitched mention targets you send." />
+  <meta name="description" content="CiteSprint by Praveen Doddamani: founding $497 (first 5), then $747 (next 10), then from $997. Free mini-audit. Markdown/PR deliverables, credible mention pitches you send. ~10 business days after kickoff." />
   <link rel="canonical" href="https://citesprint.tech/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://citesprint.tech/" />
@@ -454,6 +454,35 @@
     }
     .founding-box strong { color: var(--paper); }
 
+
+    /* Contact form */
+    .form-grid { display: grid; gap: 0.95rem; margin-top: 0.85rem; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .form-grid label {
+      display: block; font-size: 0.82rem; font-weight: 600;
+      color: var(--paper); margin-bottom: 0.35rem; letter-spacing: 0.01em;
+    }
+    .form-grid input,
+    .form-grid textarea {
+      width: 100%; padding: 0.75rem 0.9rem;
+      border-radius: 12px; border: 1px solid var(--border-strong);
+      background: rgba(12,10,9,0.55); color: var(--paper);
+      font-family: var(--sans); font-size: 0.95rem;
+      outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-grid input::placeholder,
+    .form-grid textarea::placeholder { color: var(--muted); }
+    .form-grid input:focus,
+    .form-grid textarea:focus {
+      border-color: rgba(224,122,95,0.55);
+      box-shadow: 0 0 0 3px rgba(224,122,95,0.18);
+    }
+    .form-grid textarea { min-height: 5.5rem; resize: vertical; }
+    .form-grid button[disabled] { opacity: 0.7; cursor: wait; }
+    @media (max-width: 860px) {
+      .form-row-2 { grid-template-columns: 1fr; }
+    }
+
     /* Ethics */
     .wont { display: grid; gap: 0.85rem; grid-template-columns: repeat(2, 1fr); }
     .wont-item {
@@ -545,7 +574,7 @@
       "name": "Is this another AI-mention monitoring tool?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Monitoring tells you who got named. CiteSprint is a productized sprint: baseline your buyer prompts, ship FAQ + vs pages, and get help with 2\u20133 ethical mention targets \u2014 we pick targets and draft pitches; you send."
+        "text": "No. Monitoring dashboards tell you who got named. CiteSprint is a one-time productized sprint: baseline your buyer prompts, ship FAQ + vs pages as markdown/PR artifacts, and get help with 2\u20133 credible mention targets \u2014 we pick targets and draft pitches; you send."
       }
     },
     {
@@ -582,10 +611,26 @@
     },
     {
       "@type": "Question",
+      "name": "How do you deliver the work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As artifacts founders can ship: clean markdown comparisons and technical FAQs, or a PR against your docs/site repo when that fits \u2014 not slide decks. JSON-LD / schema notes only where relevant. No invented claims."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What counts as a credible mention?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Places models and developers already trust \u2014 curated GitHub awesome-lists, useful Stack Overflow context, high-rep Reddit threads, niche developer indexes. We draft pitches; you send. Not spam links, bot comments, or purchased mention packages."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Do I need a developer on my team?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Helpful but not required. Deliverables are written for founders: copy you can paste into Webflow/Framer/docs, plus clear notes for whoever touches robots.txt or schema."
+        "text": "Helpful but not required. Deliverables are written for founders: markdown you can paste into Webflow/Framer/docs (or merge as a PR), plus clear notes for whoever touches robots.txt or JSON-LD."
       }
     },
     {
@@ -593,7 +638,15 @@
       "name": "How long does the sprint take?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "About a week of guided work from kickoff to draft handoff, depending on how fast you answer a few questions. Shipping pages on your site is on your timeline."
+        "text": "About 10 business days after kickoff to draft handoff, depending on how fast you answer a few questions. Shipping pages on your site is on your timeline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this ongoing social, PPC, or a SaaS dashboard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. CiteSprint is a one-time productized sprint. No ongoing social management, no PPC, no black-box monitoring dashboard \u2014 just baseline, pages, and pitched mentions you send."
       }
     },
     {
@@ -666,7 +719,7 @@
               <a class="btn btn-primary btn-lg" href="#contact">Request a free mini-audit</a>
               <a class="btn btn-secondary btn-lg" href="sample-audit.html">See sample audit</a>
             </div>
-            <p class="hero-note tiny">Founding $497 while first-5 spots remain · then $747 · then from $997 · free mini-audit</p>
+            <p class="hero-note tiny">Founding $497 while first-5 spots remain · then $747 · then from $997 · ~10 business days after kickoff · free mini-audit</p>
           </div>
           <aside class="hero-card" aria-label="Offer summary">
             <div class="label">Founding offer · first 5 clients</div>
@@ -676,7 +729,7 @@
             <p style="margin-bottom:0.35rem;">While founding spots remain. Next 10 at <strong style="color:var(--paper);">$747</strong>. Then <strong style="color:var(--paper);">from $997</strong> (up to ~$1,500 by scope). Scope agreed in writing before you pay.</p>
             <ul class="deliver-list">
               <li><span class="tick" aria-hidden="true">✓</span> <span><strong>Measured baseline</strong> — naming rate across many runs; null is possible</span></li>
-              <li><span class="tick" aria-hidden="true">✓</span> <span><strong>FAQ + vs pages</strong> — drafts you can publish</span></li>
+              <li><span class="tick" aria-hidden="true">✓</span> <span><strong>FAQ + vs pages</strong> — clean markdown / PR-ready, not slide decks</span></li>
               <li><span class="tick" aria-hidden="true">✓</span> <span><strong>2–3 mention pitches</strong> — we pick targets &amp; draft; you send</span></li>
             </ul>
             <div class="slots">
@@ -706,7 +759,7 @@
           <div class="card good">
             <span class="tag tag-good">CiteSprint</span>
             <h3>Baseline the prompts. Ship the pages.</h3>
-            <p>We pick the questions buyers actually ask, score how often you’re named, then deliver FAQ + vs pages and 2–3 ethical mention targets (we draft pitches; you send).</p>
+            <p>We pick the questions buyers actually ask, score how often you’re named, then deliver FAQ + vs pages as markdown/PR artifacts and 2–3 credible mention pitches (you send).</p>
           </div>
         </div>
       </div>
@@ -742,32 +795,32 @@
     <section id="included" class="alt">
       <div class="wrap">
         <div class="section-label">What’s in the sprint</div>
-        <h2>What’s included — plain English</h2>
-        <p class="lede">One focused sprint. Deliverables you can open, edit, and ship — not a homework dump. <strong style="color:var(--gold);">Founding $497</strong> (first 5) → <strong style="color:var(--paper);">$747</strong> (next 10) → <strong style="color:var(--paper);">from $997</strong> (up to ~$1,500 if scope needs it).</p>
+        <h2>What’s included — exact package</h2>
+        <p class="lede">One focused sprint. You get artifacts you can open in git or your CMS — <strong style="color:var(--paper);">PRs or clean markdown</strong>, not slide decks. <strong style="color:var(--gold);">Founding $497</strong> (first 5) → <strong style="color:var(--paper);">$747</strong> (next 10) → <strong style="color:var(--paper);">from $997</strong> (up to ~$1,500 if scope needs it). Typical handoff: <strong style="color:var(--paper);">~10 business days after kickoff</strong>.</p>
         <ol class="steps">
           <li>
             <span class="num">1</span>
             <div>
-              <h3>Measured baseline</h3>
-              <p>We map buyer questions that create pipeline, mark win / tie / lose, and note who AI tends to name. Each report lists the assistants actually used. If nothing moved or you’re barely there, we say so in plain English. Null results are allowed.</p>
+              <h3>Measured baseline (written)</h3>
+              <p>Buyer prompts that create pipeline, win / tie / lose, and who AI tends to name. Each report lists the assistants actually used — only what the practice harness supports. Null results are allowed and reported in plain English.</p>
             </div>
           </li>
           <li>
             <span class="num">2</span>
             <div>
-              <h3>FAQ + honest “vs” pages</h3>
-              <p>Draft FAQ and 2–3 comparison pages written so assistants can quote you without inventing claims. Founder-ready copy you can paste into your site or CMS.</p>
+              <h3>FAQ + honest “vs” pages (markdown / PR-ready)</h3>
+              <p>Draft technical FAQs and 2–3 comparison pages written so assistants can quote you without inventing claims. Delivered as clean markdown (or a PR against your docs/site repo when that fits) — not a deck. JSON-LD / schema notes only where relevant to your stack.</p>
             </div>
           </li>
           <li>
             <span class="num">3</span>
             <div>
-              <h3>2–3 mention targets — we draft, you send</h3>
-              <p>We pick 2–3 ethical roundups, community threads, or docs-adjacent places and <strong style="color:var(--paper);">draft the pitches</strong>. You send them. If a placement isn’t realistic, we say so and coach the next best move — no homework dump, no shady link schemes.</p>
+              <h3>2–3 credible mention targets — we draft, you send</h3>
+              <p>We pick 2–3 ethical places models (and buyers) actually trust — e.g. curated GitHub awesome-lists, useful Stack Overflow context, high-rep Reddit threads, niche developer indexes — and <strong style="color:var(--paper);">draft the pitches</strong>. You send them. Not spam links, bot comments, or purchased “AI mention” packages. If a placement isn’t realistic, we say so.</p>
             </div>
           </li>
         </ol>
-        <p class="tiny" style="margin-top:1.25rem;">Optional extra only (if useful for your stack): brief notes on technical files like <code>llms.txt</code> or schema — helpful, not a core deliverable.</p>
+        <p class="tiny" style="margin-top:1.25rem;">Package handoff: baseline write-up + page drafts + mention pitches + a simple re-test checklist. Optional only: brief notes on <code>llms.txt</code> / schema — helpful, not a hero deliverable.</p>
       </div>
     </section>
 
@@ -805,7 +858,7 @@
         <div class="grid-2">
           <div class="card">
             <h3>What you send</h3>
-            <p>Your domain, a short product one-liner, and either five prompts you care about — or “help me pick.” Email is enough; a short call works too if you prefer.</p>
+            <p>Three fields: product URL or GitHub, your top 2 competitors, and a work email. That’s enough to start. Prefer plain text? Write <a href="mailto:hello@citesprint.tech">hello@citesprint.tech</a>.</p>
           </div>
           <div class="card">
             <h3>What you get back</h3>
@@ -850,7 +903,7 @@
     <section id="how" class="alt">
       <div class="wrap">
         <div class="section-label">How it works</div>
-        <h2>Four steps. About a week of guided work.</h2>
+        <h2>Four steps. ~10 business days after kickoff.</h2>
         <div class="grid-2">
           <div class="card">
             <div class="icon-pill">1</div>
@@ -860,17 +913,17 @@
           <div class="card">
             <div class="icon-pill">2</div>
             <h3>Kickoff &amp; measured baseline</h3>
-            <p>Confirm ICP, competitors, and the questions that matter. Align on honesty rules and how we’ll measure naming rate.</p>
+            <p>Confirm ICP, top competitors, and the questions that matter. Align on honesty rules and which assistants this report will actually use.</p>
           </div>
           <div class="card">
             <div class="icon-pill">3</div>
             <h3>We draft; you approve &amp; ship</h3>
-            <p>You get FAQ + vs page copy plus 2–3 mention targets with draft pitches — you send. Optional <code>llms.txt</code> notes only if useful.</p>
+            <p>Markdown / PR-ready FAQ + vs pages, plus 2–3 mention targets with draft pitches — you send. Optional <code>llms.txt</code> / JSON-LD notes only if useful.</p>
           </div>
           <div class="card">
             <div class="icon-pill">4</div>
             <h3>Re-test checklist</h3>
-            <p>You re-check the same prompts yourself with a simple checklist so progress is visible, not promised.</p>
+            <p>You re-check the same prompts yourself with a simple checklist so progress is visible, not promised. No invented before/after screenshots — see the <a href="sample-audit.html">sample audit</a> for proof format.</p>
           </div>
         </div>
       </div>
@@ -905,11 +958,11 @@
             </div>
             <ul>
               <li>Measured baseline + honest measurement notes</li>
-              <li>FAQ + 2–3 “vs” pages drafted</li>
-              <li>2–3 mention targets — we draft pitches; you send</li>
-              <li>Before/after re-test checklist</li>
+              <li>FAQ + 2–3 “vs” pages as markdown / PR-ready drafts</li>
+              <li>2–3 credible mention pitches — we draft; you send</li>
+              <li>Re-test checklist · ~10 business days after kickoff</li>
             </ul>
-            <p class="tiny" style="margin:-0.5rem 0 1rem;">Optional: brief technical-file notes (e.g. <code>llms.txt</code> / schema) if useful — not a hero deliverable.</p>
+            <p class="tiny" style="margin:-0.5rem 0 1rem;">Optional: brief technical-file notes (e.g. <code>llms.txt</code> / JSON-LD) if useful — not a hero deliverable. Proof format: <a href="sample-audit.html">sample audit</a> — no invented screenshots.</p>
             <a class="btn btn-secondary" href="#contact">Ask about a sprint (after mini-audit)</a>
             <p class="tiny" style="margin-top:0.85rem;">Or email <a href="mailto:hello@citesprint.tech">hello@citesprint.tech</a>.</p>
           </div>
@@ -939,9 +992,9 @@
     <!-- ETHICS -->
     <section id="ethics" class="alt">
       <div class="wrap">
-        <div class="section-label">Ethics</div>
+        <div class="section-label">Ethics &amp; out of scope</div>
         <h2>What we won’t do</h2>
-        <p class="lede">AI citation work only helps if it’s durable and honest. We refuse shortcuts that burn trust — and we won’t sell you certainty we can’t defend.</p>
+        <p class="lede">AI citation work only helps if it’s durable and honest. We refuse shortcuts that burn trust — and we won’t sell you certainty, retainers, or a black-box dashboard we can’t defend.</p>
         <div class="wont">
           <div class="wont-item">
             <span class="xmark" aria-hidden="true">✕</span>
@@ -949,7 +1002,7 @@
           </div>
           <div class="wont-item">
             <span class="xmark" aria-hidden="true">✕</span>
-            <div><strong>No fake reviews</strong><span class="muted small"> We won’t invent G2/Capterra stars, Reddit praise, or testimonials.</span></div>
+            <div><strong>No fake reviews or spam</strong><span class="muted small"> No invented G2/Capterra stars, bot comments, mass link schemes, or purchased “AI mention” packages.</span></div>
           </div>
           <div class="wont-item">
             <span class="xmark" aria-hidden="true">✕</span>
@@ -957,7 +1010,15 @@
           </div>
           <div class="wont-item">
             <span class="xmark" aria-hidden="true">✕</span>
-            <div><strong>No spam</strong><span class="muted small"> No mass link schemes, comment spam, or purchased “AI mention” packages.</span></div>
+            <div><strong>No ongoing social</strong><span class="muted small"> This is a one-time sprint. We don’t run your LinkedIn, Twitter/X, or community calendar.</span></div>
+          </div>
+          <div class="wont-item">
+            <span class="xmark" aria-hidden="true">✕</span>
+            <div><strong>No PPC</strong><span class="muted small"> We don’t buy ads, manage Google/Bing campaigns, or sell paid-traffic retainers.</span></div>
+          </div>
+          <div class="wont-item">
+            <span class="xmark" aria-hidden="true">✕</span>
+            <div><strong>No black-box SaaS dashboard</strong><span class="muted small"> You get written artifacts and pitches — not another monitoring login that only charts who already got named.</span></div>
           </div>
         </div>
       </div>
@@ -971,7 +1032,7 @@
         <div style="margin-top:1.5rem;">
           <details>
             <summary>Is this another AI-mention monitoring tool?</summary>
-            <p>No. Monitoring tells you who got named. CiteSprint is a productized sprint: baseline your buyer prompts, ship FAQ + vs pages, and get help with 2–3 ethical mention targets — we pick targets and draft pitches; you send.</p>
+            <p>No. Monitoring dashboards tell you who got named. CiteSprint is a one-time productized sprint: baseline your buyer prompts, ship FAQ + vs pages as markdown/PR artifacts, and get help with 2–3 credible mention targets — we pick targets and draft pitches; you send.</p>
           </details>
           <details>
             <summary>What’s the price?</summary>
@@ -994,12 +1055,24 @@
             <p>About 45 minutes of async work: I check a short set of buyer prompts and send you a plain written baseline — score-style labels (Citation-ready / Partial / barely there) and fixable priorities. Optional short call only if you want it. It’s also how we decide if the paid sprint is a fit. Free audits are limited so quality stays high.</p>
           </details>
           <details>
+            <summary>How do you deliver the work?</summary>
+            <p>As artifacts founders can ship: clean markdown comparisons and technical FAQs, or a PR against your docs/site repo when that fits — not slide decks. JSON-LD / schema notes only where relevant. No invented claims.</p>
+          </details>
+          <details>
+            <summary>What counts as a “credible mention”?</summary>
+            <p>Places models and developers already trust — curated GitHub awesome-lists, useful Stack Overflow context, high-rep Reddit threads, niche developer indexes. We draft pitches; <em>you</em> send. Not spam links, bot comments, or purchased mention packages.</p>
+          </details>
+          <details>
             <summary>Do I need a developer on my team?</summary>
-            <p>Helpful but not required. Deliverables are written for founders: copy you can paste into Webflow/Framer/docs, plus clear notes for whoever touches robots.txt or schema.</p>
+            <p>Helpful but not required. Deliverables are written for founders: markdown you can paste into Webflow/Framer/docs (or merge as a PR), plus clear notes for whoever touches robots.txt or JSON-LD.</p>
           </details>
           <details>
             <summary>How long does the sprint take?</summary>
-            <p>About a week of guided work from kickoff to draft handoff, depending on how fast you answer a few questions. Shipping pages on your site is on your timeline.</p>
+            <p>About <strong>~10 business days after kickoff</strong> to draft handoff, depending on how fast you answer a few questions. Shipping pages on your site is on your timeline.</p>
+          </details>
+          <details>
+            <summary>Is this ongoing social, PPC, or a SaaS dashboard?</summary>
+            <p>No. CiteSprint is a one-time productized sprint. No ongoing social management, no PPC, no black-box monitoring dashboard — just baseline, pages, and pitched mentions you send.</p>
           </details>
           <details>
             <summary>How do you measure “getting named” if AI answers change?</summary>
@@ -1049,56 +1122,36 @@
         </p>
         <div class="grid-2">
           <div class="card">
-            <h3>Lead form</h3>
+            <h3>Micro-intake · 3 fields</h3>
             <!-- Formspree endpoint shared from ClosePack workspace (xnpnpvko). Subject tags CiteSprint leads. -->
             <form id="citesprint-form" class="form-grid" action="https://formspree.io/f/xnpnpvko" method="POST">
               <input type="hidden" name="_subject" value="CiteSprint — free mini-audit request" />
               <input type="hidden" name="source" value="citesprint.tech" />
-              <div class="form-row-2">
-                <div>
-                  <label for="cs-name">Your name</label>
-                  <input id="cs-name" name="name" type="text" required autocomplete="name" placeholder="Jane Founder" />
-                </div>
-                <div>
-                  <label for="cs-email">Work email</label>
-                  <input id="cs-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com" />
-                </div>
-              </div>
-              <div class="form-row-2">
-                <div>
-                  <label for="cs-product">Product name</label>
-                  <input id="cs-product" name="product" type="text" required placeholder="Acme Monitor" />
-                </div>
-                <div>
-                  <label for="cs-domain">Domain</label>
-                  <input id="cs-domain" name="domain" type="text" required placeholder="acme.com" />
-                </div>
+              <div>
+                <label for="cs-product-url">Product URL or GitHub</label>
+                <input id="cs-product-url" name="product_url" type="text" required autocomplete="url" placeholder="https://yoursite.com or github.com/you/repo" />
               </div>
               <div>
-                <label for="cs-oneliner">One sentence: what you sell &amp; to whom</label>
-                <input id="cs-oneliner" name="oneliner" type="text" required placeholder="API uptime monitoring for indie SaaS teams" />
+                <label for="cs-competitors">Top 2 competitors</label>
+                <input id="cs-competitors" name="competitors" type="text" required placeholder="Competitor A, Competitor B" />
               </div>
               <div>
-                <label for="cs-prompts">Five buyer prompts <span class="tiny">(or “help me pick”)</span></label>
-                <textarea id="cs-prompts" name="prompts" required placeholder="help me pick"></textarea>
-              </div>
-              <div>
-                <label for="cs-competitors">Competitors you hear most often <span class="tiny">(optional)</span></label>
-                <input id="cs-competitors" name="competitors" type="text" placeholder="2–3 names" />
+                <label for="cs-email">Work email</label>
+                <input id="cs-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com" />
               </div>
               <button class="btn btn-primary" type="submit" id="cs-submit">Send mini-audit request</button>
               <p class="tiny" id="cs-form-status" style="margin:0;">No spam. I’ll reply about the free mini-audit only.</p>
             </form>
             <p class="tiny" style="margin-top:1rem; margin-bottom:0;">
               Form fallback:
-              <a href="mailto:hello@citesprint.tech?subject=Free%20mini-audit&body=Name%3A%0AEmail%3A%0AProduct%3A%0ADomain%3A%0AOne-liner%3A%0APrompts%20(or%20%22help%20me%20pick%22)%3A%0ACompetitors%20(optional)%3A">open mailto template</a>
+              <a href="mailto:hello@citesprint.tech?subject=Free%20mini-audit&body=Product%20URL%20or%20GitHub%3A%0ATop%202%20competitors%3A%0AWork%20email%3A">open mailto template</a>
               · plain text <strong style="color:var(--paper);">hello@citesprint.tech</strong>
             </p>
           </div>
           <div class="card">
             <h3>What to expect</h3>
             <p style="margin-top:0; color:var(--muted);">
-              About 45 minutes of async work on my side. You get a plain written baseline — who tends to get named, three priorities, and whether a CiteSprint is even a fit.
+              About 45 minutes of async work on my side from those three fields. You get a plain written baseline — who tends to get named, three priorities, and whether a CiteSprint is even a fit. Paid sprint handoff is typically ~10 business days after kickoff.
             </p>
             <p style="color:var(--muted);">
               <strong style="color:var(--paper);">$497</strong> founding (first 5, case-study rights) → <strong style="color:var(--paper);">$747</strong> (next 10) → <strong style="color:var(--paper);">from $997</strong>.
@@ -1164,7 +1217,7 @@
         <div class="tiny" style="margin-top:0.35rem;">Currently taking a small number of clients · $497 → $747 → from $997</div>
       </div>
       <div class="tiny">
-        No citation guarantees · No fake reviews · No cloaking · No spam<br />
+        No guarantees · No spam · No social/PPC retainers · No black-box dashboard<br />
         <a href="mailto:hello@citesprint.tech">hello@citesprint.tech</a>
         · <a href="https://github.com/pkdoddamani">GitHub</a>
         · <a href="sample-audit.html">Sample audit</a>
