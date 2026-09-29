@@ -17,4 +17,4 @@ GitHub Pages: https://pkdoddamani.github.io/citesprint/
 
 ## Contact
 
-Use the mailto buttons on the live page (inbox placeholder until a real address is wired).
+Use the mailto buttons on the live page (hello@citesprint.tech).
