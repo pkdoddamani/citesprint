@@ -1,20 +1,16 @@
 # CiteSprint
 
-**CiteSprint** is a one-time AI answer visibility sprint by [Praveen Doddamani](https://github.com/pkdoddamani).
+Sales site for [citesprint.tech](https://citesprint.tech) — personal AI-answer visibility sprint by Praveen Doddamani.
 
-It helps small developer-tool founders see how often AI answer engines name (or skip) their product on real buyer questions, then ships FAQ and comparison pages and helps place a few credible mentions so those engines have something solid to cite.
+## Pricing ladder
+1. **$497** — founding, first 5 (case-study rights)
+2. **$747** — next 10
+3. **From $997** — standard (up to ~$1,500 by scope)
 
-This is a hands-on fixed-price service, not a monitoring SaaS.
+## Pages
+- `index.html` — sales page
+- `sample-audit.html` — practice sample audit (Checkly; not a customer case study)
+- `favicon.svg` — site icon
+- `CNAME` — citesprint.tech
 
-## Live page
-
-GitHub Pages: https://pkdoddamani.github.io/citesprint/
-
-## Pricing (on the page)
-
-- **Standard:** from $997 (scope in writing)
-- **Founding:** $497 for the first 5 clients, in exchange for permission to publish a before/after + candid quote
-
-## Contact
-
-Use the mailto buttons on the live page (hello@citesprint.tech).
+Published via GitHub Pages from `main`.

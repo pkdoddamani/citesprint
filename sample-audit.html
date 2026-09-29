@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sample practice audit: Checkly — CiteSprint</title>
+  <meta name="description" content="Practice / sample AI-answer visibility audit on Checkly (public developer tool). Not a customer case study. Honest sources: site checks, Glotier ChatGPT+Gemini (Aug 2026), Reditus citation maps, public roundups." />
+  <link rel="canonical" href="https://citesprint.tech/sample-audit.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://citesprint.tech/sample-audit.html" />
+  <meta property="og:title" content="Sample practice audit: Checkly — CiteSprint" />
+  <meta property="og:description" content="Practice audit with real tables: prompts, engines/sources used, win/tie/lose labels. Not a customer case study." />
+  <meta property="og:site_name" content="CiteSprint" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sample practice audit: Checkly — CiteSprint" />
+  <meta name="twitter:description" content="Practice audit with real tables — not a customer case study." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0c0a09; --ink-2: #1c1917; --ink-3: #292524;
+      --paper: #faf7f2; --paper-muted: #e7e0d5; --muted: #a8a29e;
+      --text: #faf7f2; --text-dim: #d6d3d1;
+      --coral: #e07a5f; --coral-soft: rgba(224,122,95,0.14); --coral-glow: rgba(224,122,95,0.35);
+      --sage: #81b29a; --gold: #e9c46a;
+      --border: rgba(231,224,213,0.12); --border-strong: rgba(231,224,213,0.22);
+      --radius: 18px; --shadow: 0 24px 60px rgba(0,0,0,0.4); --max: 960px;
+      --serif: "Fraunces", Georgia, serif; --sans: "Outfit", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); background: var(--ink); color: var(--text);
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(900px 500px at 8% -5%, rgba(224,122,95,0.14), transparent 55%),
+        radial-gradient(700px 420px at 92% 8%, rgba(129,178,154,0.08), transparent 50%);
+    }
+    a { color: var(--coral); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; position: relative; z-index: 1; }
+    .muted { color: var(--muted); }
+    .tiny { font-size: 0.8rem; color: var(--muted); }
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(16px) saturate(1.2);
+      background: rgba(12,10,9,0.78); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 1rem; }
+    .logo {
+      font-family: var(--serif); font-weight: 700; font-size: 1.25rem;
+      letter-spacing: -0.03em; color: var(--paper); text-decoration: none;
+      display: flex; flex-direction: column; gap: 0.1rem; line-height: 1.15;
+    }
+    .logo em { font-style: italic; font-weight: 500; color: var(--coral); }
+    .logo .byline { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; color: var(--muted); }
+    .nav-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; text-decoration: none; }
+    .nav-links a:hover { color: var(--paper); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      padding: 0.75rem 1.2rem; border-radius: 999px; font-family: var(--sans);
+      font-weight: 600; font-size: 0.92rem; border: 1px solid transparent; cursor: pointer;
+      text-decoration: none; transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(135deg, #e07a5f 0%, #c45d45 100%); color: #fffaf7; box-shadow: 0 10px 28px var(--coral-glow); }
+    .btn-secondary { background: transparent; color: var(--paper); border-color: var(--border-strong); }
+    .btn-secondary:hover { background: rgba(250,247,242,0.04); color: var(--paper); }
+    .banner {
+      margin: 1.75rem 0 0; padding: 1rem 1.2rem; border-radius: 14px;
+      background: rgba(233,196,106,0.12); border: 1px solid rgba(233,196,106,0.35);
+      color: var(--paper); font-size: 0.95rem;
+    }
+    .banner strong { color: var(--gold); }
+    h1 {
+      font-family: var(--serif); font-size: clamp(1.9rem, 4.2vw, 2.6rem);
+      line-height: 1.12; letter-spacing: -0.03em; margin: 1.4rem 0 0.85rem; font-weight: 650;
+    }
+    h2 {
+      font-family: var(--serif); font-size: clamp(1.35rem, 3vw, 1.75rem);
+      letter-spacing: -0.02em; margin: 0 0 0.75rem; font-weight: 650;
+    }
+    h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0 0 0.4rem; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 0.55rem;
+    }
+    .lede { color: var(--text-dim); font-size: 1.05rem; max-width: 42rem; margin: 0 0 1.4rem; }
+    section { padding: 2.4rem 0; }
+    .card {
+      background: var(--ink-2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.25rem 1.3rem; margin-bottom: 1rem;
+    }
+    .score-pill {
+      display: inline-block; margin: 0.5rem 0 1rem; padding: 0.35rem 0.85rem;
+      border-radius: 999px; background: rgba(233,196,106,0.16); color: var(--gold);
+      font-weight: 600; font-size: 0.88rem; border: 1px solid rgba(233,196,106,0.3);
+    }
+    .meta-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem; margin: 1.2rem 0 1.5rem;
+    }
+    .meta-item {
+      background: var(--ink-2); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 1rem;
+    }
+    .meta-item .k { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .meta-item .v { font-weight: 600; color: var(--paper); margin-top: 0.2rem; font-size: 0.95rem; }
+    .table-wrap {
+      overflow-x: auto; border: 1px solid var(--border); border-radius: 14px;
+      background: var(--ink-2); margin: 0.75rem 0 1.25rem;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { padding: 0.75rem 0.9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; background: rgba(0,0,0,0.25); }
+    tr:last-child td { border-bottom: none; }
+    td strong { color: var(--paper); }
+    .tag {
+      display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .tag-lose { background: rgba(248,113,113,0.15); color: #f87171; }
+    .tag-tie { background: rgba(233,196,106,0.16); color: var(--gold); }
+    .tag-win { background: rgba(129,178,154,0.18); color: var(--sage); }
+    .tag-partial { background: rgba(233,196,106,0.16); color: var(--gold); }
+    .tag-ok { background: rgba(129,178,154,0.18); color: var(--sage); }
+    .tag-gap { background: rgba(248,113,113,0.15); color: #f87171; }
+    ul.clean { margin: 0.4rem 0 0; padding-left: 1.15rem; color: var(--muted); }
+    ul.clean li { margin: 0.35rem 0; }
+    footer {
+      padding: 2.5rem 0 3rem; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.9rem; position: relative; z-index: 1;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+    code { font-size: 0.86em; background: rgba(250,247,242,0.06); padding: 0.1em 0.35em; border-radius: 4px; }
+    @media (max-width: 640px) {
+      .nav-links .hide-sm { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="/">Cite<em>Sprint</em><span class="byline">by Praveen Doddamani</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="hide-sm" href="/#pricing">Pricing</a>
+        <a class="hide-sm" href="/#about">About</a>
+        <a class="hide-sm" href="/#contact">Contact</a>
+        <a class="btn btn-primary" href="/#contact">Free mini-audit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <div class="banner" role="note">
+          <strong>Practice / sample — not a customer case study.</strong>
+          This is an example audit on a public developer tool (Checkly) for CiteSprint demos and training.
+          It does <em>not</em> claim Checkly is a client, partner, or that CiteSprint “works for Checkly.”
+        </div>
+
+        <p class="section-label" style="margin-top:1.75rem;">Sample practice audit</p>
+        <h1>Checkly — AI answer visibility baseline</h1>
+        <p class="lede">
+          A founder-readable look at whether AI assistants are likely to <strong style="color:var(--paper);">name Checkly</strong>
+          when buyers ask for tools — with honest labels on what was measured vs inferred.
+        </p>
+
+        <div class="meta-grid">
+          <div class="meta-item"><div class="k">Product</div><div class="v">Checkly · checklyhq.com</div></div>
+          <div class="meta-item"><div class="k">Date</div><div class="v">Sep 19, 2026 (IST)</div></div>
+          <div class="meta-item"><div class="k">Overall score</div><div class="v">Partial</div></div>
+          <div class="meta-item"><div class="k">Framing</div><div class="v">Practice sample</div></div>
+        </div>
+        <div class="score-pill">Score: Partial — strong on API / synthetics framing; easy to miss on classic “uptime” wording</div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="section-label">Honesty first</div>
+        <h2>What this sample actually used</h2>
+        <p class="lede">No invented multi-engine harness. Sources below are the ones behind the tables.</p>
+        <div class="card">
+          <ul class="clean" style="margin:0; color:var(--text-dim);">
+            <li><strong style="color:var(--paper);">(A) Direct site checks</strong> — curl of robots.txt, <code>/llms.txt</code>, About/FAQ/vs URLs, homepage JSON-LD (Sep 19, 2026).</li>
+            <li><strong style="color:var(--paper);">(B) Third-party measured naming</strong> — Glotier Aug 3, 2026 study of who <strong style="color:var(--paper);">ChatGPT + Gemini</strong> name on classic uptime prompts (6 prompts); Reditus Aug 2026 ChatGPT citation maps for uptime software.</li>
+            <li><strong style="color:var(--paper);">(C) Inferred from public 2026 roundups</strong> — “best API / synthetic / Playwright monitoring” articles that engines often retrieve. Labeled <em>inferred</em>, not live chat transcripts.</li>
+          </ul>
+          <p class="tiny" style="margin:1rem 0 0;">We did <strong>not</strong> paste all five Checkly buyer prompts into a personal ChatGPT / Perplexity / AI Overviews login for this practice draft. Where a cell says “inferred,” treat it as retrieval context — not a screenshot claim.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="section-label">Prompt map</div>
+        <h2>Buyer prompts · outcome · engine / source</h2>
+        <p class="lede">Win / tie / lose here means “likely named early / shared shortlist / usually absent” for that prompt cluster — not a citation guarantee.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Buyer prompt</th>
+                <th>Outcome</th>
+                <th>Assistants / source</th>
+                <th>Who tends to get named</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><strong>“best API monitoring tools for startups”</strong></td>
+                <td><span class="tag tag-tie">Tie / Partial</span></td>
+                <td>Inferred: 2026 API/synthetics roundups + Reditus cites checklyhq.com</td>
+                <td>Checkly alongside Datadog Synthetics, Postman Monitors, UptimeRobot, Better Stack, Hyperping</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><strong>“best synthetic monitoring for developers”</strong></td>
+                <td><span class="tag tag-tie">Tie / leaning</span></td>
+                <td>Inferred: public 2026 synthetics / Playwright roundups</td>
+                <td>Checkly appears when wording matches “synthetics / monitoring as code”; still shares mindshare</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><strong>“Checkly vs Datadog”</strong></td>
+                <td><span class="tag tag-partial">Partial</span></td>
+                <td>Direct: site check · Inferred: third-party compare content</td>
+                <td>Buyers hunt “vs” pages; Checkly’s <code>/vs/datadog</code> was <strong>404</strong> in our curl — third parties own much of the story</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><strong>“alternatives to Pingdom for API checks”</strong></td>
+                <td><span class="tag tag-tie">Tie / Partial</span></td>
+                <td>Inferred: alternatives listicles + category citation maps</td>
+                <td>Often mixed shortlists (UptimeRobot, Better Stack, Hyperping, Datadog, sometimes Checkly)</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><strong>“monitoring as code Playwright”</strong></td>
+                <td><span class="tag tag-win">Stronger mention</span></td>
+                <td>Inferred: developer-focused 2026 content where Checkly’s positioning matches</td>
+                <td>Checkly more likely when the buyer uses Playwright / as-code wording</td>
+              </tr>
+              <tr>
+                <td>—</td>
+                <td><strong>Classic cluster: “best uptime monitoring tools”</strong> <span class="tiny">(category control)</span></td>
+                <td><span class="tag tag-lose">Lose</span></td>
+                <td><strong>Measured:</strong> Glotier ChatGPT + Gemini · 6 prompts · Aug 3, 2026</td>
+                <td>UptimeRobot, Hyperping, Better Stack, Uptime Kuma, Pingdom — <strong>Checkly often absent</strong> (different category framing)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tiny">Translation: not invisible on API/synthetics wording — easy to miss on the highest-volume everyday “uptime” phrasing.</p>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="section-label">Category benchmark (third-party)</div>
+        <h2>Glotier measured naming rates — classic uptime prompts</h2>
+        <p class="lede">Same Aug 2026 ChatGPT + Gemini run (6 prompts). Included so you can see what “measured rates” look like for the adjacent uptime cluster — <strong style="color:var(--paper);">not</strong> Checkly customer results.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Named in</th>
+                <th>Rate</th>
+                <th>Engines in study</th>
+                <th>Note for Checkly</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>UptimeRobot</strong></td>
+                <td>6 / 6</td>
+                <td><span class="tag tag-win">100%</span></td>
+                <td>ChatGPT + Gemini (Glotier)</td>
+                <td>Benchmark leader on classic uptime wording</td>
+              </tr>
+              <tr>
+                <td><strong>Hyperping</strong></td>
+                <td>5 / 6</td>
+                <td><span class="tag tag-win">83%</span></td>
+                <td>ChatGPT + Gemini (Glotier)</td>
+                <td>Strong naming; also has /llms.txt + /ai-info</td>
+              </tr>
+              <tr>
+                <td><strong>Better Stack</strong></td>
+                <td>4 / 6</td>
+                <td><span class="tag tag-tie">67%</span></td>
+                <td>ChatGPT + Gemini (Glotier)</td>
+                <td>Strong naming; our curl found no /llms.txt</td>
+              </tr>
+              <tr>
+                <td><strong>Checkly</strong></td>
+                <td>Not in Glotier named-12</td>
+                <td><span class="tag tag-lose">—</span></td>
+                <td>Same study set (uptime framing)</td>
+                <td>Positioning gap vs everyday “uptime” prompts</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tiny">Reditus (Aug 2026) separately lists checklyhq.com among cited domains for uptime-software-style ChatGPT citation maps — useful signal that Checkly shows up in some retrieval paths even when classic uptime shortlists skip it.</p>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="section-label">Site readiness</div>
+        <h2>Direct observations on checklyhq.com</h2>
+        <p class="lede">Curl checks dated Sep 19, 2026. Files help clarity; they do not fix rank by themselves.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Check</th>
+                <th>Result</th>
+                <th>What it means for AI naming</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>robots.txt</strong></td>
+                <td><span class="tag tag-ok">Allows crawlers</span> · sitemap listed</td>
+                <td>AI/search crawlers are not locked out — good.</td>
+              </tr>
+              <tr>
+                <td><strong>/llms.txt</strong></td>
+                <td><span class="tag tag-ok">HTTP 200</span> · clear product definition</td>
+                <td>Clean “who we are / when to recommend us” sheet — good.</td>
+              </tr>
+              <tr>
+                <td><strong>About page</strong></td>
+                <td><span class="tag tag-ok">Live</span></td>
+                <td>Helps confirm a real company — good.</td>
+              </tr>
+              <tr>
+                <td><strong>FAQ at /faq</strong></td>
+                <td><span class="tag tag-gap">404</span></td>
+                <td>Missed chance to answer buyer questions in a format models love to quote.</td>
+              </tr>
+              <tr>
+                <td><strong>/vs/datadog</strong></td>
+                <td><span class="tag tag-gap">404</span></td>
+                <td>“X vs Y” is buyer-intent gold; third parties currently own much of that URL space.</td>
+              </tr>
+              <tr>
+                <td><strong>Homepage JSON-LD</strong></td>
+                <td><span class="tag tag-ok">Present</span></td>
+                <td>Helps machines label the page — helpful, not magic.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="section-label">Priorities</div>
+        <h2>Top 3 fixable issues (do these first)</h2>
+        <div class="card">
+          <h3>1. Own everyday buyer wording</h3>
+          <p class="muted" style="margin:0;">Publish plain pages (and sections in <code>/llms.txt</code>) that say when Checkly <em>is</em> and <em>is not</em> the right pick versus simple uptime tools. AI copies the internet’s phrasing — “synthetics-only” language misses “uptime” searches.</p>
+        </div>
+        <div class="card">
+          <h3>2. Ship comparison pages you control</h3>
+          <p class="muted" style="margin:0;">Checkly vs Datadog Synthetics, vs Better Stack, vs Hyperping, vs UptimeRobot — honest, dated, with pricing posture. “X vs Y” prompts are high intent.</p>
+        </div>
+        <div class="card">
+          <h3>3. Earn mentions where answers already come from</h3>
+          <p class="muted" style="margin:0;">For uptime-like topics, Aug 2026 Glotier measurements pointed at Reddit, Quora, YouTube, and vendor docs more than G2 for some engines. A perfect site with zero community proof still loses the shortlist.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="section-label">What a CiteSprint would ship</div>
+        <h2>For a product in this situation</h2>
+        <div class="card">
+          <ol style="margin:0; padding-left:1.2rem; color:var(--text-dim);">
+            <li style="margin-bottom:0.55rem;"><strong style="color:var(--paper);">Prompt baseline</strong> — 15–25 buyer questions marked win / tie / lose, with who gets named and which assistants each report used.</li>
+            <li style="margin-bottom:0.55rem;"><strong style="color:var(--paper);">FAQ + 2–3 “vs” pages</strong> — founder-ready drafts you can publish.</li>
+            <li style="margin-bottom:0.55rem;"><strong style="color:var(--paper);">Mention help</strong> — we pick 2–3 ethical targets and draft pitches; <em>you</em> send. No shady link schemes.</li>
+            <li><strong style="color:var(--paper);">Re-test checklist</strong> — same prompts, so you can see movement yourself.</li>
+          </ol>
+          <p class="tiny" style="margin:1rem 0 0;">Pricing ladder: <strong style="color:var(--paper);">$497</strong> founding (first 5, case-study rights) → <strong style="color:var(--paper);">$747</strong> (next 10) → <strong style="color:var(--paper);">from $997</strong> (up to ~$1,500 by scope). Risk reducer on paid sprints: if baseline already shows you’re named on most target prompts, we stop and refund.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/#contact">Request a free mini-audit</a>
+          <a class="btn btn-secondary" href="/">Back to CiteSprint</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0; padding-bottom:3rem;">
+      <div class="wrap">
+        <div class="section-label">Sources</div>
+        <h2>Not fabricated</h2>
+        <ul class="clean">
+          <li>Direct curl checks of robots.txt, llms.txt, key URLs, JSON-LD — Sep 19, 2026</li>
+          <li>Glotier: “Uptime monitoring tools: who ChatGPT and Gemini name (2026)” — measured prompts dated 2026-08-03 (third-party)</li>
+          <li>Reditus: “What ChatGPT Cites for uptime monitoring software” — August 2026 (third-party)</li>
+          <li>Public 2026 API / synthetic monitoring roundups (retrieval context — labeled inferred)</li>
+        </ul>
+        <p class="tiny" style="margin-top:1.25rem;">CiteSprint ethics: no citation guarantees · no fake reviews · no cloaking · no spam.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;">
+      <div>
+        <strong style="color:var(--paper); font-family:var(--serif);">CiteSprint</strong>
+        <div class="tiny">by Praveen Doddamani · practice sample · Sep 2026</div>
+      </div>
+      <div class="tiny">
+        <a href="mailto:hello@citesprint.tech">hello@citesprint.tech</a>
+        · <a href="https://github.com/pkdoddamani">GitHub</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
