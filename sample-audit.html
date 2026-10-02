@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How AI engines evaluate developer tools — sample Checkly audit | CiteSprint</title>
-  <meta name="description" content="Practice sample audit of Checkly: personal Google AI Mode + AI Overview runs (Sep 29, 2026 IST), plus Glotier/Reditus third-party and labeled inferred sources. Not a customer case study." />
+  <meta name="description" content="Practice sample audit of Checkly: Sep 29 Google AI Mode + Overview runs, plus signed-in ChatGPT/Claude/Gemini/Perplexity/Grok runs (Oct 2–3, 2026 IST). Glotier/Reditus third-party. Not a customer case study." />
   <link rel="canonical" href="https://citesprint.tech/sample-audit.html" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://citesprint.tech/sample-audit.html" />
   <meta property="og:title" content="How AI engines evaluate developer tools — sample Checkly audit" />
-  <meta property="og:description" content="Practice GEO-style audit: prompts, measured vs inferred sources, win/tie/lose. Not a customer case study. Founding CiteSprint $497." />
+  <meta property="og:description" content="Practice GEO-style audit: Sep 29 Google runs + Oct 2–3 signed-in assistant runs. Measured vs inferred, win/tie/lose. Not a customer case study. Founding CiteSprint $497." />
   <meta property="og:image" content="https://citesprint.tech/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="CiteSprint" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="How AI engines evaluate developer tools — sample Checkly audit" />
-  <meta name="twitter:description" content="Practice audit with real tables — how AI engines evaluate a developer tool. Claim a sprint from $497." />
+  <meta name="twitter:description" content="Practice audit with real dated tables (Google Sep 29 + signed-in assistants Oct 2–3). Claim a sprint from $497." />
   <meta name="twitter:image" content="https://citesprint.tech/og-image.png" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -199,11 +199,11 @@
 
         <div class="meta-grid">
           <div class="meta-item"><div class="k">Product</div><div class="v">Checkly · checklyhq.com</div></div>
-          <div class="meta-item"><div class="k">Date</div><div class="v">Sep 29, 2026 (IST) · personal runs</div></div>
+          <div class="meta-item"><div class="k">Date</div><div class="v">Sep 29 + Oct 2–3, 2026 (IST)</div></div>
           <div class="meta-item"><div class="k">Overall score</div><div class="v">Partial</div></div>
           <div class="meta-item"><div class="k">Framing</div><div class="v">Practice sample</div></div>
         </div>
-        <div class="score-pill">Score: Partial — strong on API / synthetics framing; easy to miss on classic “uptime” wording</div>
+        <div class="score-pill">Score: Partial — strong on API / synthetics / as-code in Oct signed-in runs; easy to miss on classic “uptime” wording</div>
       </div>
     </section>
 
@@ -214,7 +214,8 @@
         <p class="lede">Plain sources only — no invented multi-engine screenshot claims. These are the ones behind the tables.</p>
         <div class="card">
           <ul class="clean" style="margin:0; color:var(--text-dim);">
-            <li><strong style="color:var(--paper);">(A) CiteSprint personal runs — Sep 29, 2026 (IST)</strong> — we pasted the five Checkly buyer prompts into <strong style="color:var(--paper);">Google AI Mode</strong> and <strong style="color:var(--paper);">Google AI Overview</strong> on the box browser (1 run each prompt × engine). Naming + who else was named recorded from answer text. <strong style="color:var(--paper);">Perplexity:</strong> 2 full answers on “monitoring as code Playwright” (Checkly early); other prompts hit a signup wall. <strong style="color:var(--paper);">ChatGPT web</strong> and <strong style="color:var(--paper);">Gemini app</strong> were login-/error-walled — skipped, not invented.</li>
+            <li><strong style="color:var(--paper);">(A) CiteSprint personal runs — Sep 29, 2026 (IST)</strong> — we pasted the five Checkly buyer prompts into <strong style="color:var(--paper);">Google AI Mode</strong> and <strong style="color:var(--paper);">Google AI Overview</strong> on the box browser (1 run each prompt × engine). Naming + who else was named recorded from answer text. <strong style="color:var(--paper);">Perplexity:</strong> 2 full answers on “monitoring as code Playwright” (Checkly early); other prompts hit a signup wall. <strong style="color:var(--paper);">ChatGPT web</strong> and <strong style="color:var(--paper);">Gemini app</strong> were login-/error-walled that evening — skipped, not invented.</li>
+            <li><strong style="color:var(--paper);">(A2) CiteSprint signed-in assistant runs — Oct 2–3, 2026 (IST)</strong> — same five prompts in signed-in box Chrome (computerUse; accounts Praveen provided): <strong style="color:var(--paper);">ChatGPT</strong>, <strong style="color:var(--paper);">Claude Pro</strong>, <strong style="color:var(--paper);">Gemini app</strong>, <strong style="color:var(--paper);">Perplexity</strong>, <strong style="color:var(--paper);">Grok</strong>. Started late Oct 2 IST / completed early Oct 3 IST. Gemini had mid-answer errors on several prompts — recorded honestly (not_named where Checkly never appeared). No invented multi-engine win rates beyond these dated tables.</li>
             <li><strong style="color:var(--paper);">(B) Direct site checks</strong> — curl of robots.txt, <code>/llms.txt</code>, About/FAQ/vs URLs, homepage JSON-LD (Sep 19, 2026).</li>
             <li><strong style="color:var(--paper);">(C) Third-party measured naming</strong> — <a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Glotier Aug 3, 2026 study</a> of who <strong style="color:var(--paper);">ChatGPT + Gemini</strong> name on classic uptime prompts (6 prompts); <a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus Aug 2026 ChatGPT citation maps</a> for uptime software.</li>
             <li><strong style="color:var(--paper);">(D) Inferred from public 2026 roundups</strong> — kept in the prompt map only where we still lack a personal chat transcript; labeled <em>inferred</em>.</li>
@@ -301,10 +302,91 @@
 
     <section style="padding-top:0;">
       <div class="wrap">
+        <div class="section-label">CiteSprint measured runs</div>
+        <h2>Signed-in assistant runs · Oct 2–3, 2026 (IST)</h2>
+        <p class="lede">Same five buyer prompts in signed-in box Chrome via computerUse (accounts Praveen provided). Started late Oct 2 IST · completed early Oct 3 IST. Position = where Checkly first appeared among named tools (early / mid / late / not named). Text tables only — no invented screenshots.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Buyer prompt</th>
+                <th>ChatGPT</th>
+                <th>Claude Pro</th>
+                <th>Gemini app</th>
+                <th>Perplexity</th>
+                <th>Grok</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><strong>“best API monitoring tools for startups”</strong></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">#2 of 6; also Better Stack, UptimeRobot, New Relic, Datadog, Uptime Kuma</span></td>
+                <td><span class="tag tag-tie">Checkly mid</span><br/><span class="tiny">After Better Stack, UptimeRobot; also in closing stack</span></td>
+                <td><span class="tag tag-gap">Not named</span><br/><span class="tiny">Gemini error mid-run</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Named second; answer completed</span></td>
+                <td><span class="tag tag-tie">Checkly mid</span><br/><span class="tiny">Second major rec + comparison table</span></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><strong>“best synthetic monitoring for developers”</strong></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">First listed; recommended for developer workflows</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Opening/default; developer-first pick</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Named near top of table; then error</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Third in opening list; code-first rec</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Opening: Checkly is the best</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><strong>“Checkly vs Datadog”</strong></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Named in title/comparison; presented first</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Introduced first; direct comparison</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Completed comparison; named throughout</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">First sentence; discussed throughout</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Defined first; repeated throughout</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><strong>“alternatives to Pingdom for API checks”</strong></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">First listed alternative</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">First under real API testing</span></td>
+                <td><span class="tag tag-tie">Checkly mid</span><br/><span class="tiny">After Better Stack; then error</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">First alternative; answer completed</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">First table row + rec sections</span></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><strong>“monitoring as code Playwright”</strong></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Prominent in numbered options</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Main tool; native Playwright</span></td>
+                <td><span class="tag tag-gap">Not named</span><br/><span class="tiny">Started MaC explainer; refusal/error</span></td>
+                <td><span class="tag tag-gap">Not named</span><br/><span class="tiny">Generic Playwright MaC; no Checkly</span></td>
+                <td><span class="tag tag-win">Checkly early</span><br/><span class="tiny">Attributed phrase to Checkly early</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Run counts (honest)</h3>
+          <ul class="clean" style="margin:0; color:var(--text-dim);">
+            <li><strong style="color:var(--paper);">ChatGPT:</strong> 5/5 answered · Checkly <strong style="color:var(--paper);">early in 5/5</strong></li>
+            <li><strong style="color:var(--paper);">Claude Pro:</strong> 5/5 answered · Checkly named in <strong style="color:var(--paper);">5/5</strong> (startups mid; others early)</li>
+            <li><strong style="color:var(--paper);">Gemini app:</strong> mixed — Checkly early on synthetic (then error) and vs Datadog; mid on Pingdom alternatives (then error); <strong style="color:var(--paper);">not named</strong> on startups + Playwright (errors). Mid-answer errors recorded honestly.</li>
+            <li><strong style="color:var(--paper);">Perplexity:</strong> 5/5 completed · Checkly early on 4; <strong style="color:var(--paper);">not named</strong> on Playwright / monitoring-as-code</li>
+            <li><strong style="color:var(--paper);">Grok:</strong> 5/5 answered · Checkly named in <strong style="color:var(--paper);">5/5</strong> (startups mid; others early)</li>
+          </ul>
+          <p class="tiny" style="margin:1rem 0 0;">Translation from Oct 2–3 signed-in runs: Checkly is often early when buyers use synthetics, vs-Datadog, Pingdom-alternatives, or Playwright/as-code wording across ChatGPT/Claude/Grok; Gemini reliability was uneven that night; Perplexity missed Checkly on the Playwright prompt.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
         <div class="section-label">Prompt map</div>
 
         <h2>Buyer prompts · outcome · engine / source</h2>
-        <p class="lede">Win / tie / lose here blends <strong style="color:var(--paper);">our Sep 29 personal runs</strong> (above) with third-party / inferred sources — not a citation guarantee. Prefer the personal-runs table when you want dated counts.</p>
+        <p class="lede">Win / tie / lose here blends <strong style="color:var(--paper);">our Sep 29 Google runs</strong> and <strong style="color:var(--paper);">Oct 2–3 signed-in assistant runs</strong> (above) with third-party / inferred sources — not a citation guarantee. Prefer the dated tables when you want engine-level counts.</p>
         <div class="table-wrap">
           <table>
             <thead>
@@ -321,36 +403,36 @@
                 <td>1</td>
                 <td><strong>“best API monitoring tools for startups”</strong></td>
                 <td><span class="tag tag-tie">Tie / Partial</span></td>
-                <td><strong>Measured (us):</strong> Google AI Mode late · AI Overview mid · Sep 29, 2026 IST · + <a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus</a></td>
-                <td>Better Stack / Hyperping often ahead; Checkly still named with Postman, Moesif, Zuplo, Datadog</td>
+                <td><strong>Measured (us):</strong> Google AI Mode late · AI Overview mid · Sep 29 · ChatGPT early · Claude mid · Gemini not_named (error) · Perplexity early · Grok mid · Oct 2–3 · + <a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus</a> (third-party)</td>
+                <td>Better Stack / Hyperping often ahead on Google; signed-in ChatGPT/Perplexity early; Claude/Grok mid; Gemini error that night</td>
               </tr>
               <tr>
                 <td>2</td>
                 <td><strong>“best synthetic monitoring for developers”</strong></td>
                 <td><span class="tag tag-win">Win / leaning</span></td>
-                <td><strong>Measured (us):</strong> Google AI Mode early · AI Overview mid · Sep 29, 2026 IST</td>
-                <td>Checkly early on AI Mode; shares Overview with Better Stack, New Relic, Datadog, Hyperping</td>
+                <td><strong>Measured (us):</strong> Google AI Mode early · AI Overview mid · Sep 29 · ChatGPT/Claude/Gemini/Perplexity/Grok early · Oct 2–3 (Gemini then errored)</td>
+                <td>Checkly early across signed-in assistants; Google Overview still shared with Better Stack, New Relic, Datadog, Hyperping</td>
               </tr>
               <tr>
                 <td>3</td>
                 <td><strong>“Checkly vs Datadog”</strong></td>
                 <td><span class="tag tag-win">Named (vs)</span></td>
-                <td><strong>Measured (us):</strong> AI Mode + Overview early · Sep 29 · site: <code>/vs/datadog</code> still 404 (Sep 19 curl)</td>
-                <td>Engines compare Checkly vs Datadog readily; Checkly still lacks an owned vs page</td>
+                <td><strong>Measured (us):</strong> AI Mode + Overview early · Sep 29 · ChatGPT/Claude/Gemini/Perplexity/Grok early · Oct 2–3 · site: <code>/vs/datadog</code> still 404 (Sep 19 curl)</td>
+                <td>Engines compare Checkly vs Datadog readily (all early in Oct signed-in runs); Checkly still lacks an owned vs page</td>
               </tr>
               <tr>
                 <td>4</td>
                 <td><strong>“alternatives to Pingdom for API checks”</strong></td>
                 <td><span class="tag tag-tie">Tie / Partial</span></td>
-                <td><strong>Measured (us):</strong> AI Mode mid · AI Overview mid · Sep 29, 2026 IST</td>
-                <td>Checkly mid shortlist with Dotcom-Monitor, Hyperping, Better Stack, UptimeRobot, Datadog</td>
+                <td><strong>Measured (us):</strong> AI Mode mid · AI Overview mid · Sep 29 · ChatGPT/Claude/Perplexity/Grok early · Gemini mid (then error) · Oct 2–3</td>
+                <td>Signed-in assistants often put Checkly early; Google still mid shortlist with Dotcom-Monitor, Hyperping, Better Stack, Datadog</td>
               </tr>
               <tr>
                 <td>5</td>
                 <td><strong>“monitoring as code Playwright”</strong></td>
                 <td><span class="tag tag-win">Strong mention</span></td>
-                <td><strong>Measured (us):</strong> AI Mode + Overview + Perplexity early · Sep 29, 2026 IST</td>
-                <td>Checkly consistently early when buyer uses Playwright / as-code wording</td>
+                <td><strong>Measured (us):</strong> AI Mode + Overview + Perplexity early · Sep 29 · ChatGPT/Claude/Grok early · Gemini not_named (error) · Perplexity not_named · Oct 2–3</td>
+                <td>Still strong on ChatGPT/Claude/Grok + Google when buyer uses Playwright / as-code; Oct Perplexity + Gemini did not name Checkly</td>
               </tr>
               <tr>
                 <td>—</td>
@@ -514,6 +596,7 @@
         <h2>Not fabricated</h2>
         <ul class="clean">
           <li><strong style="color:var(--paper);">CiteSprint personal runs</strong> — Google AI Mode + Google AI Overview for all 5 Checkly buyer prompts; Perplexity for “monitoring as code Playwright” (2 answers); ChatGPT web + Gemini app skipped (login/error) — Sep 29, 2026 IST</li>
+          <li><strong style="color:var(--paper);">CiteSprint signed-in assistant runs</strong> — ChatGPT, Claude Pro, Gemini app, Perplexity, Grok for all 5 prompts (signed-in box Chrome via computerUse) — started late Oct 2, 2026 IST / completed early Oct 3, 2026 IST; Gemini mid-answer errors recorded honestly</li>
           <li>Direct curl checks of robots.txt, llms.txt, key URLs, JSON-LD — Sep 19, 2026</li>
           <li><a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Glotier: “Uptime monitoring tools: who ChatGPT and Gemini name (2026)”</a> — measured prompts dated 2026-08-03 (third-party)</li>
           <li><a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus: “What ChatGPT Cites for uptime monitoring software”</a> — August 2026 (third-party)</li>
@@ -536,7 +619,7 @@
     <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;">
       <div>
         <strong style="color:var(--paper); font-family:var(--serif);">CiteSprint</strong>
-        <div class="tiny">by Praveen Doddamani · practice sample · personal runs Sep 29, 2026 IST</div>
+        <div class="tiny">by Praveen Doddamani · practice sample · runs Sep 29 + Oct 2–3, 2026 IST</div>
       </div>
       <div class="tiny">
         <a href="mailto:hello@citesprint.tech">hello@citesprint.tech</a>
