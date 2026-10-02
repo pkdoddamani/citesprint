@@ -204,6 +204,12 @@
           <div class="meta-item"><div class="k">Framing</div><div class="v">Practice sample</div></div>
         </div>
         <div class="score-pill">Score: Partial — strong on API / synthetics / as-code in Oct signed-in runs; easy to miss on classic “uptime” wording</div>
+
+        <div class="card" style="border-color: rgba(248,113,113,0.35); margin-top:1.25rem;">
+          <h3>Lead finding: classic “uptime monitoring” is where Checkly loses</h3>
+          <p class="muted" style="margin:0 0 0.75rem;">Do not read the Oct tables as “named 5/5 everywhere, so they don’t need help.” On API / synthetics / as-code / vs-Datadog wording, signed-in assistants often named Checkly early. On everyday <strong style="color:var(--paper);">“best uptime monitoring tools”</strong> phrasing, <a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Glotier’s Aug 2026 ChatGPT + Gemini study</a> shortlists UptimeRobot (100%), Hyperping (83%), and Better Stack (67%) — and Checkly is often absent. That category-framing gap is the point of this sample.</p>
+          <p class="tiny" style="margin:0;">Note: Checkly is a well-known funded brand, so high naming on developer-shaped prompts is expected. This practice sample still teaches the uptime-framing gap; a smaller indie sample may follow later. This page does not claim Checkly is a CiteSprint customer.</p>
+        </div>
       </div>
     </section>
 
@@ -214,9 +220,9 @@
         <p class="lede">Plain sources only — no invented multi-engine screenshot claims. These are the ones behind the tables.</p>
         <div class="card">
           <ul class="clean" style="margin:0; color:var(--text-dim);">
-            <li><strong style="color:var(--paper);">(A) CiteSprint personal runs — Sep 29, 2026 (IST)</strong> — we pasted the five Checkly buyer prompts into <strong style="color:var(--paper);">Google AI Mode</strong> and <strong style="color:var(--paper);">Google AI Overview</strong> on the box browser (1 run each prompt × engine). Naming + who else was named recorded from answer text. <strong style="color:var(--paper);">Perplexity:</strong> 2 full answers on “monitoring as code Playwright” (Checkly early); other prompts hit a signup wall. <strong style="color:var(--paper);">ChatGPT web</strong> and <strong style="color:var(--paper);">Gemini app</strong> were login-/error-walled that evening — skipped, not invented.</li>
-            <li><strong style="color:var(--paper);">(A2) CiteSprint signed-in assistant runs — Oct 2–3, 2026 (IST)</strong> — same five prompts in signed-in box Chrome (computerUse; accounts Praveen provided): <strong style="color:var(--paper);">ChatGPT</strong>, <strong style="color:var(--paper);">Claude Pro</strong>, <strong style="color:var(--paper);">Gemini app</strong>, <strong style="color:var(--paper);">Perplexity</strong>, <strong style="color:var(--paper);">Grok</strong>. Started late Oct 2 IST / completed early Oct 3 IST. Gemini had mid-answer errors on several prompts — recorded honestly (not_named where Checkly never appeared). No invented multi-engine win rates beyond these dated tables.</li>
-            <li><strong style="color:var(--paper);">(B) Direct site checks</strong> — curl of robots.txt, <code>/llms.txt</code>, About/FAQ/vs URLs, homepage JSON-LD (Sep 19, 2026).</li>
+            <li><strong style="color:var(--paper);">(A) CiteSprint personal runs — Sep 29, 2026 (IST)</strong> — we pasted the five Checkly buyer prompts into <strong style="color:var(--paper);">Google AI Mode</strong> and <strong style="color:var(--paper);">Google AI Overview</strong> on the box browser (<strong style="color:var(--paper);">1 run per prompt per engine</strong>). Naming + who else was named recorded from answer text. <strong style="color:var(--paper);">Perplexity:</strong> 2 full answers on “monitoring as code Playwright” (Checkly early); other prompts hit a signup wall. <strong style="color:var(--paper);">ChatGPT web</strong> and <strong style="color:var(--paper);">Gemini app</strong> were login-/error-walled that evening — skipped, not invented. Answers can vary run-to-run; these cells are single dated snapshots.</li>
+            <li><strong style="color:var(--paper);">(A2) CiteSprint signed-in assistant runs — Oct 2–3, 2026 (IST)</strong> — same five prompts in <strong style="color:var(--paper);">signed-in</strong> box Chrome (computerUse; accounts Praveen provided): <strong style="color:var(--paper);">ChatGPT</strong>, <strong style="color:var(--paper);">Claude Pro</strong>, <strong style="color:var(--paper);">Gemini app</strong>, <strong style="color:var(--paper);">Perplexity</strong>, <strong style="color:var(--paper);">Grok</strong>. <strong style="color:var(--paper);">1 run per prompt per engine</strong>. Chat memory / account history was <strong style="color:var(--paper);">not controlled or wiped</strong> before runs — prior chats may have influenced answers, and outputs can vary run-to-run. Started late Oct 2 IST / completed early Oct 3 IST. Gemini had mid-answer errors on several prompts — recorded honestly (not_named where Checkly never appeared). No invented multi-engine win rates beyond these dated tables.</li>
+            <li><strong style="color:var(--paper);">(B) Direct site checks</strong> — curl of robots.txt, <code>/llms.txt</code>, About/FAQ, competitor alternative/switch URLs, homepage JSON-LD (baseline Sep 19, 2026; comparison URLs re-checked Oct 3, 2026).</li>
             <li><strong style="color:var(--paper);">(C) Third-party measured naming</strong> — <a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Glotier Aug 3, 2026 study</a> of who <strong style="color:var(--paper);">ChatGPT + Gemini</strong> name on classic uptime prompts (6 prompts); <a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus Aug 2026 ChatGPT citation maps</a> for uptime software.</li>
             <li><strong style="color:var(--paper);">(D) Inferred from public 2026 roundups</strong> — kept in the prompt map only where we still lack a personal chat transcript; labeled <em>inferred</em>.</li>
           </ul>
@@ -229,7 +235,7 @@
       <div class="wrap">
         <div class="section-label">CiteSprint measured runs</div>
         <h2>Personal browser runs · Sep 29, 2026 (IST)</h2>
-        <p class="lede">Our own dated prompts — not Glotier/Reditus. Position = where Checkly first appeared among named tools in that answer (early / mid / late / absent).</p>
+        <p class="lede">Our own dated prompts — not Glotier/Reditus. <strong style="color:var(--paper);">1 run per prompt per engine</strong> (Google AI Mode + Overview). Position = where Checkly first appeared among named tools in that answer (early / mid / late / absent). Single snapshots — answers can vary run-to-run.</p>
         <div class="table-wrap">
           <table>
             <thead>
@@ -304,7 +310,7 @@
       <div class="wrap">
         <div class="section-label">CiteSprint measured runs</div>
         <h2>Signed-in assistant runs · Oct 2–3, 2026 (IST)</h2>
-        <p class="lede">Same five buyer prompts in signed-in box Chrome via computerUse (accounts Praveen provided). Started late Oct 2 IST · completed early Oct 3 IST. Position = where Checkly first appeared among named tools (early / mid / late / not named). Text tables only — no invented screenshots.</p>
+        <p class="lede">Same five buyer prompts in <strong style="color:var(--paper);">signed-in</strong> box Chrome via computerUse (accounts Praveen provided). <strong style="color:var(--paper);">1 run per prompt per engine</strong>. Chat memory / account history was not wiped; answers can vary run-to-run. Started late Oct 2 IST · completed early Oct 3 IST. Position = where Checkly first appeared among named tools (early / mid / late / not named). Failed/error cells (especially Gemini) kept honest. Text tables only — no invented screenshots.</p>
         <div class="table-wrap">
           <table>
             <thead>
@@ -417,8 +423,8 @@
                 <td>3</td>
                 <td><strong>“Checkly vs Datadog”</strong></td>
                 <td><span class="tag tag-win">Named (vs)</span></td>
-                <td><strong>Measured (us):</strong> AI Mode + Overview early · Sep 29 · ChatGPT/Claude/Gemini/Perplexity/Grok early · Oct 2–3 · site: <code>/vs/datadog</code> still 404 (Sep 19 curl)</td>
-                <td>Engines compare Checkly vs Datadog readily (all early in Oct signed-in runs); Checkly still lacks an owned vs page</td>
+                <td><strong>Measured (us):</strong> AI Mode + Overview early · Sep 29 · ChatGPT/Claude/Gemini/Perplexity/Grok early · Oct 2–3 · owned pages live: <code>/datadog-alternative/</code> + <code>/switch/datadog/</code> (200, Oct 3 curl; <code>/vs/datadog/</code> is the wrong URL pattern → 404)</td>
+                <td>Engines compare Checkly vs Datadog readily (all early in Oct signed-in runs); Checkly already owns Datadog alternative + switch content</td>
               </tr>
               <tr>
                 <td>4</td>
@@ -504,7 +510,7 @@
       <div class="wrap">
         <div class="section-label">Site readiness</div>
         <h2>Direct observations on checklyhq.com</h2>
-        <p class="lede">Curl checks dated Sep 19, 2026. Files help clarity; they do not fix rank by themselves.</p>
+        <p class="lede">Baseline curl Sep 19, 2026; competitor alternative/switch URLs re-checked Oct 3, 2026. Files help clarity; they do not fix rank by themselves.</p>
         <div class="table-wrap">
           <table>
             <thead>
@@ -522,23 +528,38 @@
               </tr>
               <tr>
                 <td><strong>/llms.txt</strong></td>
-                <td><span class="tag tag-ok">HTTP 200</span> · clear product definition</td>
+                <td><span class="tag tag-ok">HTTP 200</span> · clear product definition (re-checked Oct 3)</td>
                 <td>Clean “who we are / when to recommend us” sheet — good.</td>
               </tr>
               <tr>
                 <td><strong>About page</strong></td>
-                <td><span class="tag tag-ok">Live</span></td>
+                <td><span class="tag tag-ok">Live</span> · <code>/about/</code> 200</td>
                 <td>Helps confirm a real company — good.</td>
               </tr>
               <tr>
                 <td><strong>FAQ at /faq</strong></td>
-                <td><span class="tag tag-gap">404</span></td>
+                <td><span class="tag tag-gap">404</span> (re-checked Oct 3)</td>
                 <td>Missed chance to answer buyer questions in a format models love to quote.</td>
               </tr>
               <tr>
-                <td><strong>/vs/datadog</strong></td>
-                <td><span class="tag tag-gap">404</span></td>
-                <td>“X vs Y” is buyer-intent gold; third parties currently own much of that URL space.</td>
+                <td><strong>Datadog comparison pages</strong></td>
+                <td><span class="tag tag-ok">Live</span> · <code>/datadog-alternative/</code> 200 · <code>/switch/datadog/</code> 200</td>
+                <td>Strong owned Datadog content. Note: <code>/vs/datadog/</code> is the wrong URL pattern → 404 — do not treat that as “missing Datadog pages.”</td>
+              </tr>
+              <tr>
+                <td><strong>Other enterprise / competitor pages</strong></td>
+                <td><span class="tag tag-ok">Live</span> · New Relic, Pingdom, Dynatrace alternatives; Catchpoint + Runscope pages (Oct 3)</td>
+                <td><code>/new-relic-alternative/</code>, <code>/pingdom-alternative/</code> → <code>/alternative-pingdom/</code>, <code>/dynatrace-alternative/</code>, <code>/switch/catchpoint/</code>, <code>/alternative-runscope/</code> all resolve 200.</td>
+              </tr>
+              <tr>
+                <td><strong>Uptime-cluster switch pages</strong></td>
+                <td><span class="tag tag-ok">Partial</span> · <code>/switch/uptimerobot/</code> 200 · <code>/switch/betterstack/</code> 200</td>
+                <td>Migration guides exist for two Glotier uptime winners (UptimeRobot 100%, Better Stack 67%).</td>
+              </tr>
+              <tr>
+                <td><strong>Hyperping pages</strong></td>
+                <td><span class="tag tag-gap">Missing</span> · <code>/hyperping-alternative/</code> 404 · <code>/switch/hyperping/</code> 404</td>
+                <td>Hyperping wins 83% of Glotier classic-uptime shortlists — no owned alternative or switch page in the Datadog-style format.</td>
               </tr>
               <tr>
                 <td><strong>Homepage JSON-LD</strong></td>
@@ -560,12 +581,12 @@
           <p class="muted" style="margin:0;">Publish plain pages (and sections in <code>/llms.txt</code>) that say when Checkly <em>is</em> and <em>is not</em> the right pick versus simple uptime tools. AI copies the internet’s phrasing — “synthetics-only” language misses “uptime” searches.</p>
         </div>
         <div class="card">
-          <h3>2. Ship comparison pages you control</h3>
-          <p class="muted" style="margin:0;">Checkly vs Datadog Synthetics, vs Better Stack, vs Hyperping, vs UptimeRobot — honest, dated, with pricing posture. “X vs Y” prompts are high intent.</p>
+          <h3>2. Close the Hyperping / uptime-shortlist gap — not invent Datadog pages</h3>
+          <p class="muted" style="margin:0;">Checkly already has strong Datadog / New Relic / Pingdom / Dynatrace alternative + switch content (<code>/datadog-alternative/</code>, <code>/switch/datadog/</code>, and siblings). For tools that win classic “uptime” AI shortlists in Glotier (UptimeRobot 100%, Hyperping 83%, Better Stack 67%), Checkly has <code>/switch/</code> migration pages for UptimeRobot and Better Stack, but <strong style="color:var(--paper);">no Hyperping page</strong>, and the polished <code>*-alternative</code> comparison format used for Datadog is not mirrored for Hyperping. Gap = compete where AI shortlists already name simpler uptime tools — especially Hyperping — not “create Datadog pages from scratch.”</p>
         </div>
         <div class="card">
           <h3>3. Earn mentions where answers already come from</h3>
-          <p class="muted" style="margin:0;">For uptime-like topics, <a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Aug 2026 Glotier measurements</a> pointed at Reddit, Quora, YouTube, and vendor docs more than G2 for some engines. A perfect site with zero community proof still loses the shortlist.</p>
+          <p class="muted" style="margin:0;">For uptime-like topics, <a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Aug 2026 Glotier measurements</a> noted Reddit, Quora, YouTube, and vendor docs as surfaces that showed up for some engines more than G2 — a likely factor in who gets shortlisted, not a proven universal weight in all training data. FAQ / community mention help still makes sense if proof is thin. A perfect site with zero community proof can still lose the shortlist.</p>
         </div>
       </div>
     </section>
@@ -597,7 +618,7 @@
         <ul class="clean">
           <li><strong style="color:var(--paper);">CiteSprint personal runs</strong> — Google AI Mode + Google AI Overview for all 5 Checkly buyer prompts; Perplexity for “monitoring as code Playwright” (2 answers); ChatGPT web + Gemini app skipped (login/error) — Sep 29, 2026 IST</li>
           <li><strong style="color:var(--paper);">CiteSprint signed-in assistant runs</strong> — ChatGPT, Claude Pro, Gemini app, Perplexity, Grok for all 5 prompts (signed-in box Chrome via computerUse) — started late Oct 2, 2026 IST / completed early Oct 3, 2026 IST; Gemini mid-answer errors recorded honestly</li>
-          <li>Direct curl checks of robots.txt, llms.txt, key URLs, JSON-LD — Sep 19, 2026</li>
+          <li>Direct curl checks of robots.txt, llms.txt, FAQ, JSON-LD — Sep 19, 2026; competitor alternative/switch URLs (Datadog, Hyperping, UptimeRobot, Better Stack, New Relic, Pingdom, Dynatrace, Catchpoint, Runscope) re-checked Oct 3, 2026</li>
           <li><a href="https://glotier.com/guides/who-ai-recommends/uptime-monitoring-tools" rel="noopener noreferrer" target="_blank">Glotier: “Uptime monitoring tools: who ChatGPT and Gemini name (2026)”</a> — measured prompts dated 2026-08-03 (third-party)</li>
           <li><a href="https://getreditus.com/ai-citations/uptime-monitoring-software" rel="noopener noreferrer" target="_blank">Reditus: “What ChatGPT Cites for uptime monitoring software”</a> — August 2026 (third-party)</li>
           <li>Public 2026 API / synthetic monitoring roundups remain labeled inferred where used</li>
