@@ -43,6 +43,7 @@ Request via the form on https://citesprint.tech/#contact or email hello@citespri
 ## Key pages
 - https://citesprint.tech/
 - https://citesprint.tech/sample-audit.html
+- https://citesprint.tech/cronhooks-sample.html — short practice sample (Oct 9, 2026 IST): Cronhooks described on a branded prompt by ChatGPT, Claude, Perplexity and Grok, but not named by ChatGPT, Claude or Perplexity on 3 generic cron/webhook prompts. Not a customer; no affiliation.
 - https://citesprint.tech/llms.txt
 
 ## Optional / out of scope
