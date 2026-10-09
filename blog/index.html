@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI visibility reviews — how ChatGPT, Claude, Perplexity &amp; Grok recommend small dev tools | CiteSprint</title>
+  <meta name="description" content="Dated practice reviews of how AI assistants name (or skip) small developer tools on real buyer prompts. One run per prompt, methodology stated, not customer case studies." />
+  <link rel="canonical" href="https://citesprint.tech/blog/" />
+  <link rel="alternate" type="application/rss+xml" title="CiteSprint · AI visibility reviews" href="https://citesprint.tech/blog/feed.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://citesprint.tech/blog/" />
+  <meta property="og:title" content="AI visibility reviews — how AI assistants recommend small dev tools" />
+  <meta property="og:description" content="Dated practice reviews: who ChatGPT, Claude, Perplexity and Grok name on buyer prompts for small developer tools." />
+  <meta property="og:image" content="https://citesprint.tech/og-image.png" />
+  <meta property="og:site_name" content="CiteSprint" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI visibility reviews — how AI assistants recommend small dev tools" />
+  <meta name="twitter:description" content="Dated practice reviews of small developer tools on real buyer prompts. Not customer case studies." />
+  <meta name="twitter:image" content="https://citesprint.tech/og-image.png" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0c0a09; --ink-2: #1c1917; --ink-3: #292524;
+      --paper: #faf7f2; --paper-muted: #e7e0d5; --muted: #a8a29e;
+      --text: #faf7f2; --text-dim: #d6d3d1;
+      --coral: #e07a5f; --coral-soft: rgba(224,122,95,0.14); --coral-glow: rgba(224,122,95,0.35);
+      --sage: #81b29a; --gold: #e9c46a;
+      --border: rgba(231,224,213,0.12); --border-strong: rgba(231,224,213,0.22);
+      --radius: 18px; --shadow: 0 24px 60px rgba(0,0,0,0.4); --max: 960px;
+      --serif: "Fraunces", Georgia, serif; --sans: "Outfit", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); background: var(--ink); color: var(--text);
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(900px 500px at 8% -5%, rgba(224,122,95,0.14), transparent 55%),
+        radial-gradient(700px 420px at 92% 8%, rgba(129,178,154,0.08), transparent 50%);
+    }
+    a { color: var(--coral); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; position: relative; z-index: 1; }
+    .muted { color: var(--muted); }
+    .tiny { font-size: 0.8rem; color: var(--muted); }
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(16px) saturate(1.2);
+      background: rgba(12,10,9,0.78); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 1rem; }
+    .logo {
+      font-family: var(--serif); font-weight: 700; font-size: 1.25rem;
+      letter-spacing: -0.03em; color: var(--paper); text-decoration: none;
+      display: flex; flex-direction: column; gap: 0.1rem; line-height: 1.15;
+    }
+    .logo em { font-style: italic; font-weight: 500; color: var(--coral); }
+    .logo .byline { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; color: var(--muted); }
+    .nav-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; text-decoration: none; }
+    .nav-links a:hover { color: var(--paper); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      padding: 0.75rem 1.2rem; border-radius: 999px; font-family: var(--sans);
+      font-weight: 600; font-size: 0.92rem; border: 1px solid transparent; cursor: pointer;
+      text-decoration: none; transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(135deg, #e07a5f 0%, #c45d45 100%); color: #fffaf7; box-shadow: 0 10px 28px var(--coral-glow); }
+    .btn-secondary { background: transparent; color: var(--paper); border-color: var(--border-strong); }
+    .btn-secondary:hover { background: rgba(250,247,242,0.04); color: var(--paper); }
+    .banner {
+      margin: 1.75rem 0 0; padding: 1rem 1.2rem; border-radius: 14px;
+      background: rgba(233,196,106,0.12); border: 1px solid rgba(233,196,106,0.35);
+      color: var(--paper); font-size: 0.95rem;
+    }
+    .banner strong { color: var(--gold); }
+    h1 {
+      font-family: var(--serif); font-size: clamp(1.9rem, 4.2vw, 2.6rem);
+      line-height: 1.12; letter-spacing: -0.03em; margin: 1.4rem 0 0.85rem; font-weight: 650;
+    }
+    h2 {
+      font-family: var(--serif); font-size: clamp(1.35rem, 3vw, 1.75rem);
+      letter-spacing: -0.02em; margin: 0 0 0.75rem; font-weight: 650;
+    }
+    h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0 0 0.4rem; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 0.55rem;
+    }
+    .lede { color: var(--text-dim); font-size: 1.05rem; max-width: 42rem; margin: 0 0 1.4rem; }
+    section { padding: 2.4rem 0; }
+    .card {
+      background: var(--ink-2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.25rem 1.3rem; margin-bottom: 1rem;
+    }
+    .score-pill {
+      display: inline-block; margin: 0.5rem 0 1rem; padding: 0.35rem 0.85rem;
+      border-radius: 999px; background: rgba(233,196,106,0.16); color: var(--gold);
+      font-weight: 600; font-size: 0.88rem; border: 1px solid rgba(233,196,106,0.3);
+    }
+    .meta-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem; margin: 1.2rem 0 1.5rem;
+    }
+    .meta-item {
+      background: var(--ink-2); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 1rem;
+    }
+    .meta-item .k { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .meta-item .v { font-weight: 600; color: var(--paper); margin-top: 0.2rem; font-size: 0.95rem; }
+    .table-wrap {
+      overflow-x: auto; border: 1px solid var(--border); border-radius: 14px;
+      background: var(--ink-2); margin: 0.75rem 0 1.25rem;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { padding: 0.75rem 0.9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; background: rgba(0,0,0,0.25); }
+    tr:last-child td { border-bottom: none; }
+    td strong { color: var(--paper); }
+    .tag {
+      display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .tag-lose { background: rgba(248,113,113,0.15); color: #f87171; }
+    .tag-tie { background: rgba(233,196,106,0.16); color: var(--gold); }
+    .tag-win { background: rgba(129,178,154,0.18); color: var(--sage); }
+    .tag-partial { background: rgba(233,196,106,0.16); color: var(--gold); }
+    .tag-ok { background: rgba(129,178,154,0.18); color: var(--sage); }
+    .tag-gap { background: rgba(248,113,113,0.15); color: #f87171; }
+    ul.clean { margin: 0.4rem 0 0; padding-left: 1.15rem; color: var(--muted); }
+    ul.clean li { margin: 0.35rem 0; }
+    footer {
+      padding: 2.5rem 0 3rem; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.9rem; position: relative; z-index: 1;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+    code { font-size: 0.86em; background: rgba(250,247,242,0.06); padding: 0.1em 0.35em; border-radius: 4px; }
+    @media (max-width: 640px) {
+      .nav-links .hide-sm { display: none; }
+    }
+
+    
+    .post-list { display: grid; gap: 1rem; margin-top: 1.25rem; }
+    .post-card { display: block; color: inherit; transition: transform 0.2s ease, border-color 0.2s ease; }
+    .post-card:hover { text-decoration: none; transform: translateY(-2px); border-color: rgba(224,122,95,0.45); }
+    .post-card time { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--coral); }
+    .post-card h2 { font-size: 1.3rem; margin: 0.35rem 0 0.45rem; color: var(--paper); }
+    .post-card p { margin: 0 0 0.6rem; color: var(--text-dim); }
+    .post-card .read { font-weight: 600; color: var(--coral); font-size: 0.92rem; }
+    .post-card .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.2rem; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="/">Cite<em>Sprint</em><span class="byline">by Praveen Doddamani</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="hide-sm" href="/blog/" aria-current="page" style="color:var(--paper);">Blog</a>
+        <a class="hide-sm" href="/#pricing">Pricing</a>
+        <a class="hide-sm" href="/#contact">Contact</a>
+        <a class="btn btn-primary" href="/#contact">Free mini-audit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <p class="section-label" style="margin-top:0.5rem;">Blog · AI visibility reviews</p>
+        <h1>AI visibility reviews — how ChatGPT, Claude, Perplexity &amp; Grok recommend small dev tools</h1>
+        <p class="lede">
+          Each review takes one small developer tool, asks AI assistants the questions a real buyer would ask, and records who gets named.
+          These are <strong style="color:var(--paper);">practice reviews of public products, not CiteSprint customers</strong>, and we have no affiliation with the tools reviewed.
+          Every review is dated, uses <strong style="color:var(--paper);">one run per prompt per assistant</strong> (so each cell is a snapshot, not a rate),
+          and says plainly which assistants were skipped, what wasn't controlled, and which site facts were checked directly.
+        </p>
+        <p class="tiny" style="margin:0;"><a href="/blog/feed.xml">RSS feed</a> · new reviews roughly weekly</p>
+
+        <div class="post-list">
+          <a class="card post-card" href="/cronhooks-sample.html">
+            <time datetime="2026-10-09">Oct 9, 2026</time>
+            <h2>AI knows Cronhooks exists — but rarely recommends it</h2>
+            <p>On 3 generic cron/webhook prompts, ChatGPT, Claude and Perplexity named Cronhooks in 0 of 9 answers; all 4 assistants described it when asked by name.</p>
+            <span class="read">Read the review →</span>
+          </a>
+          <a class="card post-card" href="/sample-audit.html">
+            <time datetime="2026-10-03">Sep 29 + Oct 2–3, 2026</time>
+            <h2>How AI engines evaluate a developer tool — Checkly baseline</h2>
+            <p>Checkly was often named early on API, synthetics and as-code prompts, but is easy to miss on classic “uptime monitoring” wording.</p>
+            <span class="read">Read the review →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0; padding-bottom:3rem;">
+      <div class="wrap">
+        <div class="card" style="border-color: rgba(224,122,95,0.35);">
+          <div class="section-label">Free mini-audit</div>
+          <h2>Want a review like this for your product?</h2>
+          <p class="muted" style="margin:0;">Send your product URL and your top 2 competitors. I'll run your buyer prompts and send back a short write-up: who gets named, and the first three things I'd fix. No cost, no obligation.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/#contact">Request a free mini-audit</a>
+            <a class="btn btn-secondary" href="mailto:hello@citesprint.tech?subject=Free%20mini-audit">hello@citesprint.tech</a>
+          </div>
+          <p class="tiny" style="margin:1rem 0 0;">CiteSprint ethics: no citation guarantees · no fake reviews · no spam · no invented chat transcripts.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;">
+      <div>
+        <strong style="color:var(--paper); font-family:var(--serif);">CiteSprint</strong>
+        <div class="tiny">by Praveen Doddamani · AI visibility reviews · practice examples, not customers</div>
+      </div>
+      <div class="tiny">
+        <a href="mailto:hello@citesprint.tech">hello@citesprint.tech</a>
+        · <a href="https://github.com/pkdoddamani">GitHub</a>
+        · <a href="/blog/feed.xml">RSS</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

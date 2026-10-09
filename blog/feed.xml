@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CiteSprint · AI visibility reviews</title>
+    <link>https://citesprint.tech/blog/</link>
+    <atom:link href="https://citesprint.tech/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Dated practice reviews of how ChatGPT, Claude, Perplexity and Grok recommend small developer tools. Not customer case studies.</description>
+    <language>en</language>
+    <lastBuildDate>Fri, 09 Oct 2026 16:00:00 +0000</lastBuildDate>
+    <item>
+      <title>AI knows Cronhooks exists — but rarely recommends it</title>
+      <link>https://citesprint.tech/cronhooks-sample.html</link>
+      <guid isPermaLink="true">https://citesprint.tech/cronhooks-sample.html</guid>
+      <pubDate>Fri, 09 Oct 2026 10:00:00 +0000</pubDate>
+      <description>Practice review (Oct 9, 2026 IST): on 3 generic cron/webhook prompts, ChatGPT, Claude and Perplexity named Cronhooks in 0 of 9 answers; all 4 assistants described it when asked by name. Not a customer; no affiliation.</description>
+    </item>
+    <item>
+      <title>How AI engines evaluate a developer tool — Checkly baseline</title>
+      <link>https://citesprint.tech/sample-audit.html</link>
+      <guid isPermaLink="true">https://citesprint.tech/sample-audit.html</guid>
+      <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Practice review (Sep 29 + Oct 2–3, 2026 IST): Checkly was often named early on API, synthetics and as-code prompts, but is easy to miss on classic "uptime monitoring" wording. Not a customer case study.</description>
+    </item>
+  </channel>
+</rss>
