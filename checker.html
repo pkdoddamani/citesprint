@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free AI visibility checker — does ChatGPT recommend your dev tool? | CiteSprint</title>
+  <meta name="description" content="Free, no-signup checker: generate 5 buyer prompts for your product, run them in ChatGPT, Claude, Perplexity, Grok and Gemini, and score where you're named. Runs in your browser; nothing is sent anywhere." />
+  <link rel="canonical" href="https://citesprint.tech/checker.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://citesprint.tech/checker.html" />
+  <meta property="og:title" content="Free AI visibility checker for dev tools" />
+  <meta property="og:description" content="Generate 5 buyer prompts, run them in the AI assistants, and score where your product is named." />
+  <meta property="og:image" content="https://citesprint.tech/og-image.png" />
+  <meta property="og:site_name" content="CiteSprint" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://citesprint.tech/og-image.png" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0c0a09; --ink-2: #1c1917; --ink-3: #292524;
+      --paper: #faf7f2; --paper-muted: #e7e0d5; --muted: #a8a29e;
+      --text: #faf7f2; --text-dim: #d6d3d1;
+      --coral: #e07a5f; --coral-soft: rgba(224,122,95,0.14); --coral-glow: rgba(224,122,95,0.35);
+      --sage: #81b29a; --gold: #e9c46a;
+      --border: rgba(231,224,213,0.12); --border-strong: rgba(231,224,213,0.22);
+      --radius: 18px; --shadow: 0 24px 60px rgba(0,0,0,0.4); --max: 960px;
+      --serif: "Fraunces", Georgia, serif; --sans: "Outfit", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); background: var(--ink); color: var(--text);
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(900px 500px at 8% -5%, rgba(224,122,95,0.14), transparent 55%),
+        radial-gradient(700px 420px at 92% 8%, rgba(129,178,154,0.08), transparent 50%);
+    }
+    a { color: var(--coral); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; position: relative; z-index: 1; }
+    .muted { color: var(--muted); }
+    .tiny { font-size: 0.8rem; color: var(--muted); }
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(16px) saturate(1.2);
+      background: rgba(12,10,9,0.78); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 1rem; }
+    .logo {
+      font-family: var(--serif); font-weight: 700; font-size: 1.25rem;
+      letter-spacing: -0.03em; color: var(--paper); text-decoration: none;
+      display: flex; flex-direction: column; gap: 0.1rem; line-height: 1.15;
+    }
+    .logo em { font-style: italic; font-weight: 500; color: var(--coral); }
+    .logo .byline { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; color: var(--muted); }
+    .nav-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; text-decoration: none; }
+    .nav-links a:hover { color: var(--paper); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      padding: 0.75rem 1.2rem; border-radius: 999px; font-family: var(--sans);
+      font-weight: 600; font-size: 0.92rem; border: 1px solid transparent; cursor: pointer;
+      text-decoration: none; transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(135deg, #e07a5f 0%, #c45d45 100%); color: #fffaf7; box-shadow: 0 10px 28px var(--coral-glow); }
+    .btn-secondary { background: transparent; color: var(--paper); border-color: var(--border-strong); }
+    .btn-secondary:hover { background: rgba(250,247,242,0.04); color: var(--paper); }
+    .banner {
+      margin: 1.75rem 0 0; padding: 1rem 1.2rem; border-radius: 14px;
+      background: rgba(233,196,106,0.12); border: 1px solid rgba(233,196,106,0.35);
+      color: var(--paper); font-size: 0.95rem;
+    }
+    .banner strong { color: var(--gold); }
+    h1 {
+      font-family: var(--serif); font-size: clamp(1.9rem, 4.2vw, 2.6rem);
+      line-height: 1.12; letter-spacing: -0.03em; margin: 1.4rem 0 0.85rem; font-weight: 650;
+    }
+    h2 {
+      font-family: var(--serif); font-size: clamp(1.35rem, 3vw, 1.75rem);
+      letter-spacing: -0.02em; margin: 0 0 0.75rem; font-weight: 650;
+    }
+    h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0 0 0.4rem; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 0.55rem;
+    }
+    .lede { color: var(--text-dim); font-size: 1.05rem; max-width: 42rem; margin: 0 0 1.4rem; }
+    section { padding: 2.4rem 0; }
+    .card {
+      background: var(--ink-2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.25rem 1.3rem; margin-bottom: 1rem;
+    }
+    .score-pill {
+      display: inline-block; margin: 0.5rem 0 1rem; padding: 0.35rem 0.85rem;
+      border-radius: 999px; background: rgba(233,196,106,0.16); color: var(--gold);
+      font-weight: 600; font-size: 0.88rem; border: 1px solid rgba(233,196,106,0.3);
+    }
+    .meta-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem; margin: 1.2rem 0 1.5rem;
+    }
+    .meta-item {
+      background: var(--ink-2); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 1rem;
+    }
+    .meta-item .k { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .meta-item .v { font-weight: 600; color: var(--paper); margin-top: 0.2rem; font-size: 0.95rem; }
+    .table-wrap {
+      overflow-x: auto; border: 1px solid var(--border); border-radius: 14px;
+      background: var(--ink-2); margin: 0.75rem 0 1.25rem;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { padding: 0.75rem 0.9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; background: rgba(0,0,0,0.25); }
+    tr:last-child td { border-bottom: none; }
+    td strong { color: var(--paper); }
+    .tag {
+      display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .tag-lose { background: rgba(248,113,113,0.15); color: #f87171; }
+    .tag-tie { background: rgba(233,196,106,0.16); color: var(--gold); }
+    .tag-win { background: rgba(129,178,154,0.18); color: var(--sage); }
+    .tag-partial { background: rgba(233,196,106,0.16); color: var(--gold); }
+    .tag-ok { background: rgba(129,178,154,0.18); color: var(--sage); }
+    .tag-gap { background: rgba(248,113,113,0.15); color: #f87171; }
+    ul.clean { margin: 0.4rem 0 0; padding-left: 1.15rem; color: var(--muted); }
+    ul.clean li { margin: 0.35rem 0; }
+    footer {
+      padding: 2.5rem 0 3rem; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.9rem; position: relative; z-index: 1;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+    code { font-size: 0.86em; background: rgba(250,247,242,0.06); padding: 0.1em 0.35em; border-radius: 4px; }
+    @media (max-width: 640px) {
+      .nav-links .hide-sm { display: none; }
+    }
+
+    
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.9rem; }
+    label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-dim); margin-bottom: 0.3rem; }
+    input, select {
+      width: 100%; padding: 0.7rem 0.85rem; border-radius: 10px; border: 1px solid var(--border-strong);
+      background: var(--ink); color: var(--paper); font-family: var(--sans); font-size: 0.95rem;
+    }
+    input:focus, select:focus { outline: 2px solid var(--coral); outline-offset: 1px; }
+    .prompt { display: flex; gap: 0.75rem; align-items: flex-start; justify-content: space-between; }
+    .prompt .txt { color: var(--paper); font-weight: 500; }
+    .prompt .k { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .copy { padding: 0.45rem 0.85rem; font-size: 0.82rem; flex-shrink: 0; }
+    .engines { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    td select { min-width: 7.5rem; padding: 0.4rem 0.5rem; font-size: 0.85rem; }
+    #summary { color: var(--text-dim); margin: 0.5rem 0 0; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="/">Cite<em>Sprint</em><span class="byline">by Praveen Doddamani</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="hide-sm" href="/checker.html" aria-current="page" style="color:var(--paper);">Free checker</a>
+        <a class="hide-sm" href="/blog/">Blog</a>
+        <a class="hide-sm" href="/#pricing">Pricing</a>
+        <a class="btn btn-primary" href="/#contact">Free mini-audit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <p class="section-label" style="margin-top:0.5rem;">Free checker · 10 minutes</p>
+        <h1>Does ChatGPT recommend your dev tool? Check it yourself.</h1>
+        <p class="lede">Fill in four fields and get the same 5 buyer prompts we use in our <a href="/blog/">AI visibility reviews</a>. Paste each one into the assistants, note where your product shows up, and read the guide below. Everything runs in your browser: no signup, no tracking, nothing is sent anywhere.</p>
+
+        <div class="card">
+          <h2>1. Your product</h2>
+          <div class="form-grid">
+            <div><label for="product">Product name</label><input id="product" placeholder="e.g. Cronhooks" autocomplete="off" /></div>
+            <div><label for="category">Category</label><input id="category" placeholder="e.g. cron webhook service" autocomplete="off" /></div>
+            <div><label for="comp1">Competitor 1 (the category leader)</label><input id="comp1" placeholder="e.g. EasyCron" autocomplete="off" /></div>
+            <div><label for="comp2">Competitor 2</label><input id="comp2" placeholder="e.g. cron-job.org" autocomplete="off" /></div>
+            <div style="grid-column:1/-1;"><label for="usecase">Your sweet spot (optional): the specific job you do best</label><input id="usecase" placeholder="e.g. send a webhook at a future date in the user's timezone" autocomplete="off" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <h2>2. Your 5 buyer prompts</h2>
+        <p class="lede">Prompts 1–3 and 5 never mention your name: that's how real buyers ask. Prompt 4 names you, to check that assistants at least know you exist.</p>
+        <div id="prompts"></div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <h2>3. Run them</h2>
+        <p class="lede">Open a <strong style="color:var(--paper);">new chat</strong> for each prompt, paste it once, and read the first answer. Use a logged-out or fresh session if you can, since chat history can skew results.</p>
+        <div class="engines">
+          <a class="btn btn-secondary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT ↗</a>
+          <a class="btn btn-secondary" href="https://claude.ai/new" target="_blank" rel="noopener noreferrer">Claude ↗</a>
+          <a class="btn btn-secondary" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Perplexity ↗</a>
+          <a class="btn btn-secondary" href="https://grok.com/" target="_blank" rel="noopener noreferrer">Grok ↗</a>
+          <a class="btn btn-secondary" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer">Gemini ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <h2>4. Score it</h2>
+        <p class="lede">For each answer, pick where your product first appears in the list of tools named. Nothing is saved; refresh to clear.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Prompt</th><th>ChatGPT</th><th>Claude</th><th>Perplexity</th><th>Grok</th><th>Gemini</th></tr></thead>
+            <tbody id="score"></tbody>
+          </table>
+        </div>
+        <p id="summary"></p>
+        <div class="card" style="margin-top:1.25rem;">
+          <h3>What each result means</h3>
+          <ul class="clean" style="margin:0; color:var(--text-dim);">
+            <li><span class="tag tag-win">Early</span> First two or three tools named. You're on the shortlist buyers actually read.</li>
+            <li><span class="tag tag-tie">Mid</span> Named, but after the leaders. Buyers may stop reading before they reach you.</li>
+            <li><span class="tag tag-partial">Late</span> A passing mention near the end or in an "also consider" line. Close to invisible.</li>
+            <li><span class="tag tag-gap">Not named</span> You're missing from that answer. If this happens on prompts 1–3 but prompt 4 describes you well, assistants know you exist but don't recommend you: usually a content gap (comparison pages, FAQ answers, consistent positioning), not an awareness gap.</li>
+          </ul>
+          <p class="tiny" style="margin:1rem 0 0;">One run per prompt is a snapshot, not a rate: answers change between runs, accounts and days. Treat a pattern across several prompts as the signal, not any single cell.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0; padding-bottom:3rem;">
+      <div class="wrap">
+        <div class="card" style="border-color: rgba(224,122,95,0.35);">
+          <div class="section-label">Free mini-audit</div>
+          <h2>Want us to run it properly and tell you what to fix?</h2>
+          <p class="muted" style="margin:0;">Free mini-audit for 5 indie tools. Send your product URL and your top 2 competitors: we run the prompts across the assistants, check your site directly, and send back a short write-up with the first three things we'd fix. See an <a href="/cronhooks-sample.html">example review</a>.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/#contact">Request a free mini-audit</a>
+            <a class="btn btn-secondary" href="mailto:hello@citesprint.tech?subject=Free%20mini-audit">hello@citesprint.tech</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;">
+      <div>
+        <strong style="color:var(--paper); font-family:var(--serif);">CiteSprint</strong>
+        <div class="tiny">by Praveen Doddamani · free checker · runs entirely in your browser</div>
+      </div>
+      <div class="tiny">
+        <a href="mailto:hello@citesprint.tech">hello@citesprint.tech</a>
+        · <a href="/blog/">Blog</a>
+        · <a href="/cronhooks-sample.html">Cronhooks sample</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var labels = ["Generic best-X", "Alternatives to a competitor", "Do the job without running it yourself", "Competitor vs you (branded)", "Your specific use case"];
+    function v(id, fallback) { var x = $(id).value.trim(); return x || fallback; }
+    function build() {
+      var p = v("product", "[your product]"), c = v("category", "[category]"),
+          a = v("comp1", "[competitor 1]"), b = v("comp2", "[competitor 2]"),
+          u = $("usecase").value.trim();
+      var article = /^[aeiou]/i.test(c) ? "an" : "a";
+      var list = [
+        "What's the best " + c + " for a small team?",
+        "What are some good alternatives to " + a + "?",
+        "How can I get " + article + " " + c + " without building and running it on my own server?",
+        b + " vs " + p + " — which one should I use?",
+        u ? "I need to " + u.replace(/^(to )/i, "") + ". Is there a service or API that does this?"
+          : "I need a " + c + " for [your most specific use case]. Is there a service or API that does this?"
+      ];
+      var box = $("prompts"); box.innerHTML = "";
+      list.forEach(function (t, i) {
+        var card = document.createElement("div"); card.className = "card prompt";
+        var left = document.createElement("div");
+        var k = document.createElement("div"); k.className = "k"; k.textContent = "P" + (i + 1) + " · " + labels[i];
+        var tx = document.createElement("div"); tx.className = "txt"; tx.textContent = "“" + t + "”";
+        left.appendChild(k); left.appendChild(tx);
+        var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn btn-secondary copy"; btn.textContent = "Copy";
+        btn.addEventListener("click", function () {
+          var done = function () { btn.textContent = "Copied ✓"; setTimeout(function () { btn.textContent = "Copy"; }, 1500); };
+          if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(done); }
+          else { var ta = document.createElement("textarea"); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); done(); }
+        });
+        card.appendChild(left); card.appendChild(btn); box.appendChild(card);
+      });
+    }
+    var opts = ["—", "Early", "Mid", "Late", "Not named"];
+    var tb = $("score");
+    for (var i = 1; i <= 5; i++) {
+      var tr = document.createElement("tr");
+      var th = document.createElement("td"); th.innerHTML = "<strong>P" + i + "</strong>"; tr.appendChild(th);
+      for (var j = 0; j < 5; j++) {
+        var td = document.createElement("td"), s = document.createElement("select");
+        s.setAttribute("aria-label", "P" + i + " result");
+        opts.forEach(function (o) { var op = document.createElement("option"); op.textContent = o; s.appendChild(op); });
+        s.addEventListener("change", tally); td.appendChild(s); tr.appendChild(td);
+      }
+      tb.appendChild(tr);
+    }
+    function tally() {
+      var n = {}, total = 0;
+      tb.querySelectorAll("select").forEach(function (s) { if (s.value !== "—") { n[s.value] = (n[s.value] || 0) + 1; total++; } });
+      $("summary").textContent = total ? ("So far: " + total + " answers scored · Early " + (n.Early || 0) + " · Mid " + (n.Mid || 0) + " · Late " + (n.Late || 0) + " · Not named " + (n["Not named"] || 0)) : "";
+    }
+    ["product", "category", "comp1", "comp2", "usecase"].forEach(function (id) { $(id).addEventListener("input", build); });
+    build();
+  })();
+  </script>
+</body>
+</html>

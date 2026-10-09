@@ -45,6 +45,7 @@ Request via the form on https://citesprint.tech/#contact or email hello@citespri
 - https://citesprint.tech/sample-audit.html
 - https://citesprint.tech/cronhooks-sample.html — short practice sample (Oct 9, 2026 IST): Cronhooks described on a branded prompt by ChatGPT, Claude, Perplexity and Grok, but not named by ChatGPT, Claude or Perplexity on 3 generic cron/webhook prompts. Not a customer; no affiliation.
 - https://citesprint.tech/blog/ — AI visibility reviews: dated practice reviews of how ChatGPT, Claude, Perplexity and Grok recommend small developer tools (one run per prompt; not customers). RSS: https://citesprint.tech/blog/feed.xml
+- https://citesprint.tech/checker.html — free self-serve checker: generates 5 buyer prompts for any dev tool, links to ChatGPT, Claude, Perplexity, Grok and Gemini, and a scoring guide (early / mid / late / not named). Runs client-side; no tracking.
 - https://citesprint.tech/llms.txt
 
 ## Optional / out of scope
